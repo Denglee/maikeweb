@@ -112,8 +112,8 @@ export default {
   computed: {
     //获取 store 中 StoreTagNav。js 的 gState 页面通过{{gState}}直接用
     ...mapGetters({
-      StateNavList: "StoreTagNav/getNavList",
-      UserInfo: 'StoreTagNav/getsUserInfo',
+      // StateNavList: "StoreTagNav/getNavList",
+      // UserInfo: 'StoreTagNav/getsUserInfo',
       NavIsCollapse: "StoreTagNav/getNavIsCollapse",
     }),
   }

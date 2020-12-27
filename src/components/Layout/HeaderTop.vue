@@ -11,12 +11,13 @@
       <div class="header-rMain">
         <!--头部用户信息+退出+更换密码 -->
         <div class="headerTop-userInfo">
-          <img class="userHeader" :src='localUrl+"/"+UserInfo.logo || "assets/images/logo-daka.png"' alt="">
+<!--          <img class="userHeader" :src='localUrl+"/"+UserInfo.logo || "assets/images/logo-daka.png"' alt="">-->
           <el-dropdown class="dropdown-header">
             <div class="el-dropdown-link">
               <div class="user-name">
-                <div>{{ UserInfo.username }}</div>
-                <div>{{ UserInfo.auth_name }}</div>
+                木子
+<!--                <div>{{ UserInfo.username }}</div>-->
+<!--                <div>{{ UserInfo.auth_name }}</div>-->
               </div>
               <div><i class="el-icon-caret-bottom"></i></div>
 
@@ -330,7 +331,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      UserInfo: 'StoreTagNav/getsUserInfo',
+      // UserInfo: 'StoreTagNav/getsUserInfo',
       navIsCollapse: 'StoreTagNav/getNavIsCollapse',
     })
   },
