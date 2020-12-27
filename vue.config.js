@@ -14,15 +14,7 @@ module.exports = {
             // enableInSFC: true
         }
     },
-    //configureWebpack 这部分打包文件添加时间戳，防止缓存不更新
 
-
-    /*    chainWebpack: config => {
-            //路径配置
-            config.resolve.alias
-                .set('assets', resolve('src/assets'))
-                .set('pubImg', resolve('pub/images'));
-        },*/
     // 部署生产环境和开发环境下的URL。
     // 默认情况下，Vue CLI 会假设你的应用是被部署在一个域名的根路径上
     //例如 https://www.my-app.com/。如果应用被部署在pluginOptions一个子路径上，你就需要用这个选项指定这个子路径。
@@ -35,10 +27,10 @@ module.exports = {
     runtimeCompiler: true,
 
     // outputDir: 在npm run build 或 yarn build 时 ，生成文件的目录名称（要和baseUrl的生产环境路径一致）
-    outputDir: '/src/assets',
+    // outputDir: '/src/assets',
 
     //用于放置生成的静态资源 (js、css、img、fonts) 的；（项目打包之后，静态资源会放在这个文件夹下）
-    assetsDir: 'riches',
+    assetsDir: 'dist',
 
     //指定生成的 Index.html 的输出路径  (打包之后，改变系统默认的index.html的文件名)
     // indexPath: "myIndex.html",
@@ -69,30 +61,32 @@ module.exports = {
         extract: {
             // https://www.cnblogs.com/1rookie/p/11589863.html
             //一种方式，每次打包后的css文件名会变更新。
-            filename: `riches/css/[name].${Timestamp}.css`,
-            chunkFilename: `riches/css/[name].${Timestamp}.css`,
+            filename: `dist/css/[name].${Timestamp}.css`,
+            chunkFilename: `dist/css/[name].${Timestamp}.css`,
         }
     },
+
     configureWebpack: {
-        // externals: {
-        //     // 'echarts': 'echarts' // 配置使用CDN
-        //     // 修改打包后css文件名
-        // },
-
-        output: { // 输出重构  打包编译后的 文件名称  【模块名称.版本号.时间戳】
-            // filename: `riches/js/[name].js?v=${Timestamp}`,
-            // chunkFilename: `riches/js/[name].js?v=${Timestamp}`,
-
-            filename: `riches/js/[name].${Timestamp}.js`,
-            chunkFilename: `riches/js/[name].${Timestamp}.js`,
+        // 警告 webpack 的性能提示
+        performance: {
+            hints: 'warning',
+            // 入口起点的最大体积
+            maxEntrypointSize: 50000000,
+            // 生成文件的最大体积
+            maxAssetSize: 30000000,
+            // 只给出 js 文件的性能提示
+            assetFilter: function (assetFilename) {
+                return assetFilename.endsWith('.js')
+            }
         },
     },
+
 
     // 它支持webPack-dev-server的所有选项
     devServer: {
         host: "localhost",
         // host: "192.168.0.18",
-        port: 8282, // 端口号
+        port: 8083, // 端口号
         https: false, // https:{type:Boolean}
         open: false, //配置自动启动浏览器
         // proxy: 'http://localhost:4000' // 配置跨域处理,只有一个代理

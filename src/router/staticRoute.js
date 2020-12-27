@@ -25,7 +25,7 @@ const staticRoute = [
 
             /*前台*/
             {
-                path: 'Reception/Index',   //会员登记
+                path: '/about',   //会员登记
                 name: 'ReceptionIndex',
                 component: () => import(/* webpackChunkName: "ReceptionIndex" */ '../views/Index/About'),
                 meta: {title: '会员登记',keepAlive: true},
