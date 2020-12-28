@@ -1,4 +1,4 @@
-
+@import "themeColor";
 * {
   margin: 0;
   padding: 0;
@@ -59,6 +59,12 @@ input:-webkit-autofill {
   white-space: nowrap
 }
 
+/*环绕*/
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 /*============ 公共部分  开始 ============*/
 
 /*公共头部*/
@@ -84,13 +90,67 @@ input:-webkit-autofill {
 //  }
 //}
 
+.el-dialog {
+  border-radius: 6px;
+}
+.el-date-editor .el-range-separator {
+  padding: 0;
+}
 
-//.el-dialog {
-//  border-radius: 6px;
-//}
 
-/*环绕*/
-.flex-between {
-  display: flex;
-  justify-content: space-between;
+
+
+//通用content头部
+.public-header{
+  background-color: #fff;
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+}
+.public-main{
+  width: calc( 100% - 40px );
+  padding: 20px;
+  margin: 20px auto;
+  height: 100%;
+  //border: solid 1px #ddd;
+  background-color: #fff;
+  border-radius: 6px;
+}
+.public-form{
+  margin-bottom: 20px;
+  > div{
+    margin-right: 14px;
+  }
+}
+.public-table {
+  border-radius: 6px;
+  margin: 20px 0;
+  thead{
+    color:#000;
+  }
+  thead tr:first-child {
+    th {
+      background-color: $color-thBG;
+      padding: 7px 0;
+    }
+  }
+  td {
+    padding: 6px 0;
+  }
+
+}
+.btn-public {
+  letter-spacing: 1.5px;
+  background-color: $color-MediumBlue;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 10px;
+  color: #fff;
+  border: 0;
+  &:hover,
+  &:focus {
+    color: #fff;
+    border-color: #1c78f4;
+    background-color: #1c78f4;
+  }
 }

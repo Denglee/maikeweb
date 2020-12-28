@@ -2,11 +2,11 @@
   <aside class="layoutLeft-nav">
     <!--logo-->
     <div class="img-logoBox" @click="goIndex()">
-      logo11  {{NavIsCollapse}}
+      logo
       <!--<img class="img-logo" :src='localUrl+"/"+UserInfo.logo' alt="">-->
     </div>
-    <el-menu class="Menu-LeftNav-Box"
-             background-color="#253954"
+    <el-menu class="menuL-navBox"
+             background-color="#001529"
              text-color="#fff"
              active-text-color="#fff"
              default-active="this.$route.path"
@@ -14,13 +14,12 @@
              :default-openeds='["0"]'
     >
       <!--一级导航-->
-      <el-submenu class="sunmenu-box"
-                  popper-class="Menu-LeftNav"
+      <el-submenu class="submenu-box"
+                  popper-class="subMenuL-popNav"
                   :index="index1 +''" v-for="(navItem , index1) in StateNavList.data" :key="index1">
 
         <template slot="title">
-          <!--<span>iconNav{{navItem.fonts}}</span>-->
-          <i class="iconNav" :class="'iconNav'+navItem.fonts"></i>
+          <i class="iconNav" :class="navItem.fonts"></i>
           <span slot="title">{{ navItem.name }}</span>
         </template>
 
@@ -28,12 +27,6 @@
         <el-menu-item-group v-for="(subItems,index2) in (navItem.sub_menu)" :key="index2">
 
           <el-menu-item v-if="subItems.action ==''"></el-menu-item>
-          <!--   <el-menu-item v-else
-                           :index="index1+'' +'-'+ index2+''" :dataIndex2="index1+'' +'-'+ index2+''"
-                           @click="reloadRouter('/'+subItems.controller+'/'+subItems.action)"
-             >
-                 <span style="padding:  10px  20px;color: #fff;">{{subItems.name}}</span>
-             </el-menu-item>-->
           <el-menu-item v-else
                         :index="index1+'' +'-'+ index2+''" :dataIndex2="index1+'' +'-'+ index2+''">
             <router-link :to="{path:'/'+subItems.controller+'/'+subItems.action}"

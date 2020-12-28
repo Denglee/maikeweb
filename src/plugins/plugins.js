@@ -14,18 +14,59 @@ import Vue from 'vue'
 
 /* 3、 引入 element*/
 import {
-    Button,
+    Pagination,
+    Autocomplete,
     Menu,
     Submenu,
     MenuItem,
+    Form,
+    FormItem,
+    Input,
+    InputNumber,
+    Radio,
+    RadioGroup,
+    RadioButton,
+    Checkbox,
+    CheckboxButton,
+    CheckboxGroup,
+    Switch,
+    Select,
+    Option,
+    OptionGroup,
+    Button,
+    ButtonGroup,
+    Table,
+    TableColumn,
+    DatePicker,
+    TimeSelect,
+    TimePicker,
+
     Dropdown,
     DropdownMenu,
     DropdownItem,
     Dialog,
+    Backtop,
+    Tooltip,
+    Icon,
+    Tree,
+
+    MessageBox,
+    Message,
+
 } from 'element-ui';
 
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
-Vue.use(Button);
+// Vue.use(Loading.directive);
+// Vue.prototype.loading = Loading.service
+// Vue.prototype.msgbox = MessageBox
+// Vue.prototype.alert = MessageBox.alert
+// Vue.prototype.confirm = MessageBox.confirm
+// Vue.prototype.prompt = MessageBox.prompt
+// Vue.prototype.notify = Notification
+Vue.prototype.$message = Message;
+
+Vue.use(Pagination);
+Vue.use(Autocomplete);
 Vue.use(Menu);
 Vue.use(Submenu);
 Vue.use(MenuItem);
@@ -33,6 +74,32 @@ Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
 Vue.use(Dialog);
+Vue.use(Backtop);
+Vue.use(Tooltip);
+Vue.use(Input);
+Vue.use(InputNumber);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Radio);
+Vue.use(RadioGroup);
+Vue.use(RadioButton);
+Vue.use(Checkbox);
+Vue.use(CheckboxButton);
+Vue.use(CheckboxGroup);
+Vue.use(Switch);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(OptionGroup);
+Vue.use(Button);
+Vue.use(ButtonGroup);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use( DatePicker);
+Vue.use(TimeSelect);
+Vue.use(TimePicker);
+Vue.use(Icon);
+Vue.use(Tree);
+Vue.use(MessageBox);
 
 // import ElementUI from 'element-ui';
 // import '@/assets/theme/index.css'
@@ -67,7 +134,7 @@ import '@/assets/css/public.scss'
 
 /* 6、 引入 moment 时间转换 */
 /*凡是用的prototype 使用都要this.继承 console.log(this.$moment().format("YYYY-MM"));*/
-/*import moment from 'moment'  //引用moment js
+import moment from 'moment'  //引用moment js
 Vue.prototype.$moment = moment;//赋值使用
 moment.locale('zh-cn');//需要汉化
 
@@ -75,7 +142,7 @@ moment.locale('zh-cn');//需要汉化
 Vue.filter('dateFormat', (dataStr, pattern = 'YYYY-MM-DD') =>{
     return moment(dataStr*1000).format(pattern)
 })
-Vue.filter('minuteFormat', (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') =>{
+/*Vue.filter('minuteFormat', (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') =>{
     return moment(dataStr*1000).format(pattern)
 })
 

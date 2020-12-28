@@ -1,12 +1,12 @@
 <template>
   <div class="layout-box row-bg">
     <!--左侧侧边导航-->
-    <div  class="layout-left" :style="{width:navLeftWidth}">
-      <LeftNav></LeftNav>
+    <div  class="layoutL-box" :style="{width:navLeftWidth}">
+      <LeftNav :style="{width:navLeftWidth}"></LeftNav>
     </div>
 
     <!--右侧主体内容-->
-    <div class="layout-right" >
+    <div class="layoutR-main" >
 
       <!--右侧头部-->
       <header class="layoutR-header">
@@ -17,7 +17,10 @@
       </header>
 
       <!--右边主体内容-->
-      <router-view></router-view>
+      <div class="layoutR-contain">
+        <router-view></router-view>
+      </div>
+
 
       <!--回到顶部-->
       <el-backtop :bottom="20">
@@ -42,12 +45,9 @@ export default {
   data(){
     return{
       localUrl:this.GLOBAL.localUrl,
-
     }
   },
-  computed: {
 
-  },
 
   methods:{
     getGlobal(){

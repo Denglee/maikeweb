@@ -1,25 +1,26 @@
 <template>
-  <div>
-    <div class="headerTop-contain">
-      <div @click="FnNavChange" v-model="isCollapse" class="header-topLeft">
-        <icon class="el-icon-s-fold" v-if="!isCollapse"></icon>
-        <icon class="el-icon-s-unfold" v-else></icon>
+  <div class="headerTop-box">
+    <div class="headerTop-user">
+
+      <div class="clearfix">
+        <div style="margin-bottom: 20px;">
+          <el-button v-model="isCollapse" @click="FnNavChange()">改变</el-button>
+        </div>
       </div>
 
       <div class="header-rMain">
         <!--头部用户信息+退出+更换密码 -->
         <div class="headerTop-userInfo">
-          <icon class="el-icon-bell" style="font-size: 20px;margin-right: 20px;"></icon>
-
+<!--          <img class="userHeader" :src='localUrl+"/"+UserInfo.logo || "assets/images/logo-daka.png"' alt="">-->
           <el-dropdown class="dropdown-header">
             <div class="el-dropdown-link">
-              <!--          <img class="userHeader" :src='localUrl+"/"+UserInfo.logo || "assets/images/logo-daka.png"' alt="">-->
-              <icon class="el-icon-user-solid"></icon>
               <div class="user-name">
                 木子
-                <!--<div>{{ UserInfo.username }}</div>-->
+<!--                <div>{{ UserInfo.username }}</div>-->
+<!--                <div>{{ UserInfo.auth_name }}</div>-->
               </div>
               <div><i class="el-icon-caret-bottom"></i></div>
+
             </div>
             <el-dropdown-menu slot="dropdown"
                               hide-timeout="30000"
@@ -160,10 +161,10 @@ export default {
       if (this.isCollapse == false) {
         console.log('FnNavChange true');
 
-        this.actChangeLeftWidth('200px');
+        this.actChangeLeftWidth('150px');
         this.actChangeNavIsCollapse(false);
       } else {
-        this.actChangeLeftWidth('64px');
+        this.actChangeLeftWidth('80px');
         this.actChangeNavIsCollapse(true);
         console.log('FnNavChange  false');
       }

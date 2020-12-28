@@ -7,8 +7,8 @@ const state = {
 
     staffClasses:[],   //员工班次
 
-    navLeftWidth:'120px',  //左侧导航宽度
-    navIsCollapse:false,  //左侧导航宽度
+    navLeftWidth:'200px',  //左侧导航宽度
+    navIsCollapse:false,  //左侧导航伸缩
 };
 
 const getters = {
