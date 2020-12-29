@@ -23,7 +23,7 @@ const staticRoute = [
         component: Layout,
         children: [
 
-            /*产品信息*/
+            /*ProductInfo 产品信息*/
             {
                 path: 'ProductInfo/BrandManage',  /*品牌管理*/
                 name: 'BrandManage',
@@ -37,7 +37,17 @@ const staticRoute = [
                 meta: {title: '分类管理',keepAlive: true},
             },
 
-            /*仓库管理*/
+
+            /*StoreManage 店铺管理*/
+            {
+                path: 'StoreManage/StoreAuthorize',  /* 店铺授权 */
+                name: 'StoreAuthorize',
+                component: () => import(/* webpackChunkName: "StoreAuthorize" */ '../views/StoreManage/StoreAuthorize'),
+                meta: {title: '店铺授权',keepAlive: true},
+            },
+
+
+            /*WarehouseManage 仓库管理*/
             {
                 path: 'WarehouseManage/FBAInventory', /*FBA库存*/
                 name: 'FBAInventory',
@@ -45,7 +55,8 @@ const staticRoute = [
                 meta: {title: 'FBA库存',keepAlive: true},
             },
 
-            /*财务*/
+
+            /* Finance 财务*/
             {
                 path: 'Finance/SettlementDetails',  /*结算明细*/
                 name: 'SettlementDetails',
@@ -53,6 +64,33 @@ const staticRoute = [
                 meta: {title: '财务明细',keepAlive: true},
             },
 
+
+            /*ManageCenter  后台管理中心*/
+
+
+
+            /*MessageCenter 消息中心*/
+            {
+                path: 'MessageCenter/MessageList',  /*消息列表*/
+                name: 'MessageList',
+                component: () => import(/* webpackChunkName: "MessageList" */ '../views/MessageCenter/MessageList'),
+                meta: {title: '消息列表',keepAlive: true},
+            },
+
+
+            /*AccountCenter 账户中心*/
+            {
+                path: 'AccountCenter/PersonalInfo',  /*个人信息*/
+                name: 'PersonalInfo',
+                component: () => import(/* webpackChunkName: "PersonalInfo" */ '../views/AccountCenter/PersonalInfo'),
+                meta: {title: '个人信息',keepAlive: true},
+            },
+            {
+                path: 'AccountCenter/AccountSetup',  /*账户设置*/
+                name: 'AccountSetup',
+                component: () => import(/* webpackChunkName: "AccountSetup" */ '../views/AccountCenter/AccountSetup'),
+                meta: {title: '账户设置',keepAlive: true},
+            },
 
         ],
 

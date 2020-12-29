@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="public-main">
     <!--头部-->
     <div class="public-header">
       <h4>结算明细</h4>
     </div>
 
     <!--中间部分-->
-    <div class="public-main">
+    <div class="">
       <el-form class="public-form">
         <el-select filterable multiple collapse-tags v-model="formData.projectName" placeholder="项目名称" class="public-select">
           <el-option v-for="( item, index ) in projectArr" :key="index" :label="item.value"
@@ -14,7 +14,7 @@
         </el-select>
 
         <el-select  v-model="formData.projectName" filterable multiple clearable collapse-tags
-                    :popper-class="RevenSelCheckbox"   @change = 'chooseProject($event)'>
+                    popper-class="elSelect-checkbox"   @change = 'chooseProject($event)'>
           <el-option v-for="(item, index) in projectArr"
                      :key="index"
                      :value="item.name"
@@ -35,8 +35,7 @@
         </el-date-picker>
 
         <!--搜索-->
-        <el-button icon="el-icon-search" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="btn-public">搜索
-        </el-button>
+        <el-button icon="el-icon-search" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="btn-public">搜索</el-button>
       </el-form>
 
       <!-- 表格-->
@@ -84,8 +83,6 @@ export default {
   name: "SettlementDetails",
   data() {
     return {
-      RevenSelCheckbox:'RevenSel-checkbox',
-
       formData: {
         projectName: '',
         order_time: '',
@@ -186,56 +183,5 @@ export default {
 </script>
 
 <style lang="scss">
-.RevenSel-checkbox {
-  /*selecet 模拟 checkbox*/
-  .el-select-dropdown__item.selected::after {
-    content: "";
-  }
 
-  .el-select-dropdown__item.selected .check {
-    background-color: #005ad4;
-    border-color: #005ad4;
-  }
-
-  .el-select-dropdown__item.selected {
-    span {
-      font-weight: 400;
-    }
-  }
-
-  .el-select-dropdown__item.selected .check:after {
-    transform: rotate(45deg) scaleY(1);
-  }
-
-  .el-select-dropdown__item .check::after {
-    box-sizing: content-box;
-    content: "";
-    border: 1px solid #fff;
-    border-left: 0;
-    border-top: 0;
-    height: 7px;
-    left: 4px;
-    position: absolute;
-    top: 1px;
-    transform: rotate(45deg) scaleY(0);
-    width: 3px;
-    transition: transform .15s ease-in .05s;
-    transform-origin: center;
-  }
-
-  .el-select-dropdown__item .check {
-    display: inline-block;
-    position: relative;
-    top: 2px;
-    border: 1px solid #dcdfe6;
-    border-radius: 2px;
-    box-sizing: border-box;
-    width: 14px;
-    height: 14px;
-    background-color: #fff;
-    z-index: 1;
-    transition: border-color .25s cubic-bezier(.71, -.46, .29, 1.46), background-color .25s cubic-bezier(.71, -.46, .29, 1.46);
-  }
-
-}
 </style>

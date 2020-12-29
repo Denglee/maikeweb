@@ -27,6 +27,7 @@
 }
 .layout-box {
   display: flex;
+
   /*layout-left 左侧导航*/
   .layoutL-box{
     flex: 0 0 auto;
@@ -88,6 +89,7 @@
     box-sizing: border-box;
     overflow-y: auto;
     background-color: $color-linghtWhite;
+    display: flex;
     //border: solid 1px #ffa300;
   }
 

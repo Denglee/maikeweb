@@ -15,6 +15,7 @@ import Vue from 'vue'
 /* 3、 引入 element*/
 import {
     Pagination,
+    Dialog,
     Autocomplete,
     Menu,
     Submenu,
@@ -44,25 +45,27 @@ import {
     Dropdown,
     DropdownMenu,
     DropdownItem,
-    Dialog,
     Backtop,
     Tooltip,
     Icon,
+    Tabs,
+    TabPane,
     Tree,
-
+    Loading,
     MessageBox,
     Message,
+    Upload,
 
 } from 'element-ui';
 
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
-// Vue.use(Loading.directive);
-// Vue.prototype.loading = Loading.service
-// Vue.prototype.msgbox = MessageBox
-// Vue.prototype.alert = MessageBox.alert
-// Vue.prototype.confirm = MessageBox.confirm
-// Vue.prototype.prompt = MessageBox.prompt
-// Vue.prototype.notify = Notification
+Vue.use(Loading.directive);
+Vue.prototype.loading = Loading.service
+Vue.prototype.msgbox = MessageBox
+Vue.prototype.alert = MessageBox.alert
+Vue.prototype.confirm = MessageBox.confirm
+Vue.prototype.prompt = MessageBox.prompt
+Vue.prototype.notify = Notification
 Vue.prototype.$message = Message;
 
 Vue.use(Pagination);
@@ -94,12 +97,14 @@ Vue.use(Button);
 Vue.use(ButtonGroup);
 Vue.use(Table);
 Vue.use(TableColumn);
-Vue.use( DatePicker);
+Vue.use(DatePicker);
 Vue.use(TimeSelect);
 Vue.use(TimePicker);
 Vue.use(Icon);
 Vue.use(Tree);
-Vue.use(MessageBox);
+Vue.use(Tabs);
+Vue.use(TabPane);
+Vue.use(Upload);
 
 // import ElementUI from 'element-ui';
 // import '@/assets/theme/index.css'

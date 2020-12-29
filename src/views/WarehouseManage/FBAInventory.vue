@@ -4,10 +4,11 @@
 
 <script>
 export default {
-  name: "FBAInventory"
+  name: "FBAInventory",
+  data(){
+    return{
+
+    }
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

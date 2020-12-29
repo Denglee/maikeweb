@@ -6,10 +6,11 @@
 
 <script>
 export default {
-  name: "ClassifiedManage"
+  name: "ClassifiedManage",
+  data(){
+    return{
+
+    }
+  }
 }
 </script>
-
-<style scoped>
-
-</style>
