@@ -35,7 +35,7 @@
         </el-date-picker>
 
         <!--搜索-->
-        <el-button icon="el-icon-search" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="btn-public">搜索</el-button>
+        <el-button icon="el-icon-search" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="public-btn">搜索</el-button>
       </el-form>
 
       <!-- 表格-->
@@ -48,7 +48,7 @@
         <el-table-column prop="shop" label="店铺" sortable></el-table-column>
         <el-table-column prop="project" label="项目"></el-table-column>
 
-        <el-table-column prop="lock" label="状态">
+        <el-table-column prop="state" label="状态">
           <template slot-scope="scope">
             <div v-if="scope.row.state == 0 " class="status-connect">已完成</div>
             <div v-if="scope.row.state == 1 " class="status-break">已断开</div>

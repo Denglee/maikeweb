@@ -21,7 +21,7 @@
                 <span style="margin-left: 8px">{{item.value}}</span>
               </el-option>
             </el-select>
-            
+
             <el-date-picker
                 class="public-datePicker"
                 v-model="formData.order_time"
@@ -35,12 +35,12 @@
 
 
             <!--搜索-->
-            <el-button icon="el-icon-search" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="btn-public">搜索</el-button>
+            <el-button icon="el-icon-search" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="public-btn">搜索</el-button>
 
             <div class="formR-main">
-              <el-button icon="el-icon-search" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="btn-public">标记为已读</el-button>
-              <el-button icon="el-icon-delete" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="btn-public">删除</el-button>
-              <el-button icon="el-icon-refresh" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="btn-public">刷新</el-button>
+              <el-button icon="el-icon-search" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="public-btn">标记为已读</el-button>
+              <el-button icon="el-icon-delete" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="public-btn">删除</el-button>
+              <el-button icon="el-icon-refresh" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="public-btn">刷新</el-button>
             </div>
           </el-form>
 

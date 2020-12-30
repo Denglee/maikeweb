@@ -58,7 +58,7 @@
 <!--                    clearable></el-input>-->
 <!--        </el-form-item>-->
 <!--        <el-form-item>-->
-<!--          <el-button size="small" class="btn-public" @click="submitForm('changePassForm')">提交</el-button>-->
+<!--          <el-button size="small" class="public-btn" @click="submitForm('changePassForm')">提交</el-button>-->
 <!--          <el-button size="small" @click="resetForm('changePassForm')">重置</el-button>-->
 <!--        </el-form-item>-->
 <!--      </el-form>-->

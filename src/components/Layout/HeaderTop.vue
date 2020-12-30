@@ -24,12 +24,9 @@
             <el-dropdown-menu slot="dropdown"
                               hide-timeout="30000"
                               class="dropdown-HeaderTop">
-              <el-dropdown-item command="a">
-                <el-button type="text" @click="diaChangePass = true">更换密码</el-button>
-              </el-dropdown-item>
-              <el-dropdown-item command="b">
-                <el-button type="text" @click="loginOut()">退出</el-button>
-              </el-dropdown-item>
+              <el-dropdown-item  @click.native="FnCommand(scope.$index, scope.row)">个人中心</el-dropdown-item>
+              <el-dropdown-item command="b">更改密码</el-dropdown-item>
+              <el-dropdown-item command="c">企业管理授权</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -57,7 +54,7 @@
 <!--                    clearable></el-input>-->
 <!--        </el-form-item>-->
 <!--        <el-form-item>-->
-<!--          <el-button size="small" class="btn-public" @click="submitForm('changePassForm')">提交</el-button>-->
+<!--          <el-button size="small" class="public-btn" @click="submitForm('changePassForm')">提交</el-button>-->
 <!--          <el-button size="small" @click="resetForm('changePassForm')">重置</el-button>-->
 <!--        </el-form-item>-->
 <!--      </el-form>-->
@@ -192,48 +189,6 @@ export default {
       })
     },
 
-    /*搜索*/
-    //queryString 为在框中输入的值
-    //callback 回调函数,将处理好的数据推回
-    querySearchAsync(queryString, callback) {
-      // console.log(queryString);
-      if (queryString) {
-        let list = [];
-        ApiTopSearch({
-          keyword: queryString,
-        }).then(res => {
-          if (res.value) {
-            for (let i of res.value) {
-              i.value = i.phone;
-            }
-            list = res.value;
-          } else {
-            list = [];
-          }
-          console.log(list);
-          callback(list);
-        }).catch(res => {
-          console.error(res);
-        });
-      }
-    },
-
-    /*选中*/
-    handleSelect(item) {
-      console.log(item);
-      if (item.member_type == 1) {
-        console.log('正式会员');
-        let user_id = item.id;
-        console.log(user_id);
-        this.$router.push({name: 'Memberreal_member', params: {'user_id': user_id,}});
-      }
-      if (item.member_type == 0) {
-        console.log('非正式会员');
-        let user_id = item.id;
-        this.$router.push({name: 'Memberindex', params: {'user_id': user_id,}})
-      }
-    },
-
     /*修改密码提交*/
     submitForm(changePassForm) {
       this.$refs[changePassForm].validate((valid) => {
@@ -291,6 +246,10 @@ export default {
     /*回到首页*/
     goIndex() {
       this.$router.push({path: '/index'});
+    },
+
+    FnCommand(){
+
     },
 
   },

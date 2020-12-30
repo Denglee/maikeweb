@@ -92,12 +92,14 @@ input:-webkit-autofill {
 //}
 
 .el-dialog {
-  border-radius: 6px;
+  border-radius: 4px;
 }
 .el-date-editor .el-range-separator {
   padding: 0;
 }
-
+.el-textarea__inner{
+  font-family: inherit;
+}
 
 
 
@@ -132,11 +134,24 @@ input:-webkit-autofill {
     //justify-content: flex-end;
   }
 }
+.public-diaForm{
+  width: 90%;
+  margin: 0 auto;
+}
+.public-dialog{
+  .el-dialog__header{
+    border-bottom: solid 1px #ddd;
+  }
+}
+
 .public-datePicker{
   width: 280px !important;
 }
 .public-select{
   width: 160px !important;
+}
+.public-selectFull{
+  width: 100% !important;
 }
 .public-input{
   width: 180px !important;
@@ -147,11 +162,14 @@ input:-webkit-autofill {
   margin: 10px auto 20px;
   thead{
     color:#000;
+    .is-sortable{
+      padding: 2px 0;
+    }
   }
   thead tr:first-child {
     th {
       background-color: $color-thBG;
-      padding: 2px 0;
+      //padding: 2px 0;
     }
   }
   td {
@@ -196,19 +214,23 @@ input:-webkit-autofill {
 .tab-content{
   padding: 20px 20px 20px 10px;
 }
-.btn-public {
+.public-btn {
   letter-spacing: 1.5px;
   background-color: $color-MediumBlue;
-  height: 32px;
-  line-height: 32px;
-  padding: 0 10px;
+  //height: 32px;
+  //line-height: 32px;
+  padding: 9px 10px;
   color: #fff;
   border: 0;
+  font-size: 13px;
   &:hover,
   &:focus {
     color: #fff;
     border-color: #1c78f4;
     background-color: #1c78f4;
+  }
+  & span{
+    margin-left: 0 !important;
   }
 }
 
@@ -326,4 +348,9 @@ input:-webkit-autofill {
   .btn-header {
     display: inline-block;
   }
+}
+
+/*店铺授权*/
+.form-subTitle{
+
 }

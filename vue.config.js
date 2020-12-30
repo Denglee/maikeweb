@@ -5,26 +5,16 @@
 
 
 const Timestamp = new Date().getTime();  //当前时间为了防止打包缓存不刷新，所以给每个js文件都加一个时间戳
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     pluginOptions: {
-        i18n: {
+        // i18n: {
             // locale: 'fr',
             // fallbackLocale: 'zh-CN',
             // localeDir: 'assets/locales',
             // enableInSFC: true
-        }
+        // }
     },
-
-    // 部署生产环境和开发环境下的URL。
-    // 默认情况下，Vue CLI 会假设你的应用是被部署在一个域名的根路径上
-    //例如 https://www.my-app.com/。如果应用被部署在pluginOptions一个子路径上，你就需要用这个选项指定这个子路径。
-    // 例如，如果你的应用被部署在 https://www.my-app.com/my-app/，
-    // 则设置 baseUrl 为 /my-app/。
-    // publicPath: process.env.NODE_ENV === "production" ? "http://192.168.0.133:20000/" : "/",
-    publicPath: '/',  //有些地方这里需要 ./
-
-    // 是否使用包含运行时编译器的 Vue 构建版本
-    runtimeCompiler: true,
 
     // outputDir: 在npm run build 或 yarn build 时 ，生成文件的目录名称（要和baseUrl的生产环境路径一致）
     // outputDir: '/src/assets',
@@ -57,18 +47,44 @@ module.exports = {
     productionSourceMap: false,
 
     css: {
-        // 是否使用css分离插件 ExtractTextPlugin
         extract: {
-            // https://www.cnblogs.com/1rookie/p/11589863.html
-            //一种方式，每次打包后的css文件名会变更新。
-            filename: `dist/css/[name].${Timestamp}.css`,
-            chunkFilename: `dist/css/[name].${Timestamp}.css`,
-        }
+          filename: 'dist/css/[name].1609317655144.css',
+          chunkFilename: 'dist/css/[name].1609317655144.css'
+        },
+
     },
 
-    configureWebpack: {
+    configureWebpack: (config)=>{
+        // if (process.env.NODE_ENV === "production") {
+        //     // 为生产环境修改配置...
+        //     config.mode = "production";
+        //     // 这里修改下
+        //     config.optimization.minimizer = [
+        //         new UglifyJsPlugin({
+        //             uglifyOptions: {
+        //                 compress: {
+        //                     // warnings: false,
+        //                     drop_console: true, //console
+        //                     drop_debugger: true,
+        //                     pure_funcs: ['console.log'] //移除console
+        //                 }
+        //             }
+        //         })
+        //     ]
+        //     //打包文件大小配置
+        //     config["performance"] = {
+        //         // "maxEntrypointSize":1000000,
+        //         // "maxAssetSize":3000000
+        //     }
+        // } else {
+        //     // 为开发环境修改配置...
+        //     config.mode = "development";
+        // }
+
+        devtool = 'source-map';
+
         // 警告 webpack 的性能提示
-        performance: {
+        performance = {
             hints: 'warning',
             // 入口起点的最大体积
             maxEntrypointSize: 50000000,
@@ -78,9 +94,14 @@ module.exports = {
             assetFilter: function (assetFilename) {
                 return assetFilename.endsWith('.js')
             }
-        },
-    },
+        };
 
+        output= { // 输出重构  打包编译后的 文件名称  【模块名称.版本号.时间戳】
+            filename: `dist/js/[name].${Timestamp}.js`,
+            chunkFilename: `dist/js/[name].${Timestamp}.js`,
+        };
+
+    },
 
     // 它支持webPack-dev-server的所有选项
     devServer: {
@@ -88,8 +109,7 @@ module.exports = {
         // host: "192.168.0.18",
         port: 8083, // 端口号
         https: false, // https:{type:Boolean}
-        open: false, //配置自动启动浏览器
-        // proxy: 'http://localhost:4000' // 配置跨域处理,只有一个代理
+        open: true, //配置自动启动浏览器
 
         // 配置多个代理
         proxy: {
@@ -103,6 +123,5 @@ module.exports = {
                 }
             },
         }
-    },
-
+    }
 };

@@ -55,8 +55,10 @@ import {
     MessageBox,
     Message,
     Upload,
-
+    Cascader,
 } from 'element-ui';
+
+
 
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
 Vue.use(Loading.directive);
@@ -105,6 +107,7 @@ Vue.use(Tree);
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Upload);
+Vue.use(Cascader);
 
 // import ElementUI from 'element-ui';
 // import '@/assets/theme/index.css'
