@@ -2,19 +2,19 @@
   <div>
     <div class="headerTop-contain">
       <div @click="FnNavChange" v-model="isCollapse" class="header-topLeft">
-        <icon class="el-icon-s-fold" v-if="!isCollapse"></icon>
-        <icon class="el-icon-s-unfold" v-else></icon>
+        <i class="el-icon-s-fold" v-if="!isCollapse"></i>
+        <i class="el-icon-s-unfold" v-else></i>
       </div>
 
       <div class="header-rMain">
         <!--头部用户信息+退出+更换密码 -->
         <div class="headerTop-userInfo">
-          <icon class="el-icon-bell" style="font-size: 20px;margin-right: 20px;"></icon>
+          <i class="el-icon-bell" style="font-size: 20px;margin-right: 20px;"></i>
 
           <el-dropdown class="dropdown-header">
             <div class="el-dropdown-link">
               <!--          <img class="userHeader" :src='localUrl+"/"+UserInfo.logo || "assets/images/logo-daka.png"' alt="">-->
-              <icon class="el-icon-user-solid"></icon>
+              <i class="el-icon-user-solid"></i>
               <div class="user-name">
                 木子
                 <!--<div>{{ UserInfo.username }}</div>-->
@@ -151,18 +151,15 @@ export default {
       actChangeNavIsCollapse: "StoreTagNav/actChangeNavIsCollapse",
     }),
 
-    // 左边导航宽度修改
+    /*左边导航宽度修改*/
     FnNavChange() {
       this.isCollapse = !this.isCollapse;
       if (this.isCollapse == false) {
-        console.log('FnNavChange true');
-
         this.actChangeLeftWidth('200px');
         this.actChangeNavIsCollapse(false);
       } else {
         this.actChangeLeftWidth('64px');
         this.actChangeNavIsCollapse(true);
-        console.log('FnNavChange  false');
       }
     },
 

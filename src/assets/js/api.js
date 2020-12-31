@@ -1,5 +1,5 @@
 /*** api接口统一管理 */
-import { get, post } from './axios';
+import { get, post, put, axiosDelete } from './axios';
 
 /**
  *
@@ -26,18 +26,18 @@ export const ApiTopSearch = params => post('admin/Member/getMemberInfo', params)
 
 
 /* ==-- B、首页 --== */
-/*1、首页数据*/
-export const IndexTotal_membership = params => post('admin/Web/total_membership', params);      /*现有会员*/
-export const IndexNew_membership   = params => post('admin/Web/new_membership', params);        /*新增会员*/
-export const IndexStatistics       = params => post('admin/Web/statistics', params);            /*客流 在场人数*/
-export const IndexDrawer           = params => post('admin/Web/drawer', params);                /*更衣柜使用*/
-export const IndexCurriculum       = params => post('admin/Web/curriculum', params);            /*预约上课 课程分析*/
-export const IndexPerformance      = params => post('admin/Web/performance', params);           /*营收业绩 收支统计*/
-export const IndexRevenue_trend    = params => post('admin/Web/revenue_trend', params);         /*收支趋势*/
 
 /* ==-- B22、前台 --== */
 /*1、登记*/
 export const checkFaceApi    = params => post('admin/Web/match', params);         /*收支趋势*/
+
+
+/*店铺授权*/
+export const addStoreAuth    = params => post('/storeAuth/addStoreAuth', params);     /* 新增店铺授权 */
+export const updateStoreAuth    = params => post('/storeAuth/updateStoreAuth', params);     /* 修改店铺授权 */
+export const selectStoreAuth    = params => get('/storeAuth/selectStoreAuth', params);     /* 查询店铺授权列表 */
+export const delStoreAuth    = params => post('/storeAuth/delStoreAuth', params);      /* 根据ID删除店铺授权 */
+export const delStoreAuthList    = params => post('/storeAuth/delStoreAuthList', params);     /* 批量删除店铺授权 */
 
 
 

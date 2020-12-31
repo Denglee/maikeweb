@@ -100,8 +100,7 @@ function btnStateChange(that, id, val,  state = true,time=1500){
     },time);
 
     /*使用方法  搜索中 记得加状态 true */
-    //this.GLOBAL.btnStateChange(this,'loadState','searchLoad',true);
-
+    //this.GLOBAL.btnStateChange(this,'loadState','searchLoad');
 }
 
 export default {

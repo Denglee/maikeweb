@@ -27,72 +27,6 @@
 }
 .layout-box {
   display: flex;
-
-  /*layout-left 左侧导航*/
-  .layoutL-box{
-    flex: 0 0 auto;
-    height: 100vh;
-    @include scrollBar();
-    .layoutLeft-nav {
-      //width: 100%;
-      max-height:100vh;
-      height: 100vh;
-      background-color: #001529;
-      overflow-y: auto;
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 111;
-      .img-logoBox{
-        min-height: 40px;
-        cursor: pointer;
-        color: #fff;
-        font-size: 30px;
-        text-align: center;
-        background-color: rgb(0, 40, 77);
-      }
-      .img-logo{
-        display: block;
-        max-width: 80%;
-        margin: 14px auto;
-        cursor: pointer;
-        //min-height: 41px;
-      }
-      .el-menu--collapse{
-        width: 100%;
-        border: none;
-        >li{
-          &:hover{
-            @include navHover();
-            .el-submenu__title{
-              @include navHover();
-            }
-          }
-
-        }
-      }
-    }
-  }
-
-  /*layout-left 右边主题内容*/
-  .layoutR-main{
-    flex: 1 1 auto;
-
-    .layoutR-header{
-      width: 100%;
-      border-bottom: solid 2px #ddd;
-    }
-  }
-  .layoutR-contain{
-    width: 100%;
-    min-height: calc(100vh - 72px);
-    box-sizing: border-box;
-    overflow-y: auto;
-    background-color: $color-linghtWhite;
-    display: flex;
-    //border: solid 1px #ffa300;
-  }
-
   /*回到顶部*/
   .el-backtop{
     z-index: 2020;
@@ -115,7 +49,71 @@
       }
     }
   }
+}
 
+/*layout-left 左侧导航*/
+.layoutL-box{
+  flex: 0 0 auto;
+  height: 100vh;
+  @include scrollBar();
+  .layoutLeft-nav {
+    //width: 100%;
+    max-height:100vh;
+    height: 100vh;
+    background-color: #001529;
+    overflow-y: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 111;
+    .img-logoBox{
+      min-height: 40px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 30px;
+      text-align: center;
+      background-color: rgb(0, 40, 77);
+    }
+    .img-logo{
+      display: block;
+      max-width: 80%;
+      margin: 14px auto;
+      cursor: pointer;
+      //min-height: 41px;
+    }
+    .el-menu--collapse{
+      width: 100%;
+      border: none;
+      >li{
+        &:hover{
+          @include navHover();
+          .el-submenu__title{
+            @include navHover();
+          }
+        }
+
+      }
+    }
+  }
+}
+
+/*layout-left 右边主题内容*/
+.layoutR-main{
+  flex: 1 1 auto;
+
+  .layoutR-header{
+    width: 100%;
+    border-bottom: solid 2px #ddd;
+  }
+}
+.layoutR-contain{
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: $color-linghtWhite;
+  display: flex;
+  //border: solid 1px #ffa300;
 }
 
 /*侧边 一级导航*/
@@ -133,7 +131,15 @@
     }
   }
 }
+.subMenuL-popNav,
 .submenu-box{
+  .el-menu-item-group__title{
+    display: none;
+    padding: 0;
+  }
+}
+.submenu-box{
+
   /*侧边导航栏 icon图标*/
   .iconNav{
     //width: 16px;
@@ -162,7 +168,6 @@
   }
 }
 
-
 /*侧边 二级导航 鼠标移上去*/
 .subMenuL-popNav{
   //display: block !important;
@@ -188,7 +193,6 @@
     //border-radius: 4px;
   }
 }
-
 
 
 /*头部部分*/

@@ -153,6 +153,12 @@ input:-webkit-autofill {
 .public-selectFull{
   width: 100% !important;
 }
+.public-cascader{
+  .el-cascader-menu{
+    min-height: 300px;
+  }
+
+}
 .public-input{
   width: 180px !important;
 }

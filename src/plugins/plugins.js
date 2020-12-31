@@ -20,6 +20,7 @@ import {
     Menu,
     Submenu,
     MenuItem,
+    MenuItemGroup,
     Form,
     FormItem,
     Input,
@@ -75,6 +76,7 @@ Vue.use(Autocomplete);
 Vue.use(Menu);
 Vue.use(Submenu);
 Vue.use(MenuItem);
+Vue.use(MenuItemGroup);
 Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
@@ -149,11 +151,13 @@ moment.locale('zh-cn');//需要汉化
 // 6 moment 用法将时间戳转日期格式的 全局 过滤器
 Vue.filter('dateFormat', (dataStr, pattern = 'YYYY-MM-DD') =>{
     return moment(dataStr*1000).format(pattern)
-})
+});
+Vue.filter('timeFormat', (timeStr, pattern = 'YYYY-MM-DD') =>{
+    return moment(timeStr).format(pattern)
+});
 /*Vue.filter('minuteFormat', (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') =>{
     return moment(dataStr*1000).format(pattern)
 })
-
 Vue.filter('tempTme', (dataStr) => {
     return dataStr*1000
 });*/
