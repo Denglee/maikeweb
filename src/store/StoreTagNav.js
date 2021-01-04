@@ -9,6 +9,7 @@ const state = {
 
     navLeftWidth:'200px',  //左侧导航宽度
     navIsCollapse:false,  //左侧导航伸缩
+
 };
 
 const getters = {

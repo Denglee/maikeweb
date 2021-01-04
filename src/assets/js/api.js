@@ -34,11 +34,10 @@ export const checkFaceApi    = params => post('admin/Web/match', params);       
 
 /*店铺授权*/
 export const addStoreAuth    = params => post('/storeAuth/addStoreAuth', params);     /* 新增店铺授权 */
-export const updateStoreAuth    = params => post('/storeAuth/updateStoreAuth', params);     /* 修改店铺授权 */
+export const updateStoreAuth    = params => put('/storeAuth/updateStoreAuth', params);     /* 修改店铺授权 */
 export const selectStoreAuth    = params => get('/storeAuth/selectStoreAuth', params);     /* 查询店铺授权列表 */
-export const delStoreAuth    = params => post('/storeAuth/delStoreAuth', params);      /* 根据ID删除店铺授权 */
-export const delStoreAuthList    = params => post('/storeAuth/delStoreAuthList', params);     /* 批量删除店铺授权 */
-
+export const delStoreAuth    = params => axiosDelete('/storeAuth/delStoreAuth/'+params);     /* 单个删除店铺 */
+export const delStoreAuthList    = params => axiosDelete('/storeAuth/delStoreAuthList', params);     /* 批量删除店铺授权 */
 
 
 /*

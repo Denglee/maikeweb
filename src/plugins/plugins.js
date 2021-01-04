@@ -11,6 +11,7 @@
 
 /*下面是elementjs*/
 import Vue from 'vue'
+import axios from 'axios';
 
 /* 3、 引入 element*/
 import {

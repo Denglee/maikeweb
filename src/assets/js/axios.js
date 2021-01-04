@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Qs from 'qs'; //post 的 序列化
-import {Message,Loading} from 'element-ui';
+import {Message, Loading} from 'element-ui';
 
 /*引用qs*/
 /*Vue.prototype.$qs = qs
@@ -11,7 +11,7 @@ axios.defaults.timeout = 5000;
 
 // 设置post请求头
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
+axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8';
 
 // 请求拦截
 axios.interceptors.request.use(config => {
@@ -31,16 +31,16 @@ axios.interceptors.response.use(response => {
 
     // 对响应数据做点什么
     // console.log(response.data.status);
-    if (response.data.status == 3) {
-        console.log(response +'status == 3');
-    }
-    if (response.data.status == 0) {
-        console.log(`${response.data}  status == 0`);
-    }
-    if(!response.data.info){
-        console.log('暂无权限');
-        // Message.error('无操作权限，请联系管理员！');
-    }
+    // if (response.data.status == 3) {
+    //     console.log(response +'status == 3');
+    // }
+    // if (response.data.status == 0) {
+    //     console.log(`${response.data}  status == 0`);
+    // }
+    // if(!response.data.info){
+    //     console.log('暂无权限');
+    //     // Message.error('无操作权限，请联系管理员！');
+    // }
     return response;
 }, error => {
     // 对响应错误做点什么
@@ -66,7 +66,7 @@ export function get(url, params) {
             //  Message({message: '请求成功', type: 'success'});
         }).catch(err => {
             reject(err.data);
-            console.log(url,err);
+            console.log(url, err);
             // Loading.service(true).close();
             // Message({message: '加载失败', type: 'error'});
         })
@@ -105,7 +105,7 @@ export function post(url, params) {
             })
             .catch(err => {
                 reject(err.data);
-                console.log(url,err);
+                console.log(url, err);
                 // Loading.service(true).close();
                 // Message({message: '加载失败', type: 'error'});
             })
@@ -124,7 +124,7 @@ export function put(url, params) {
             })
             .catch(err => {
                 reject(err.data);
-                console.log(url,err);
+                console.log(url, err);
                 // Loading.service(true).close();
                 // Message({message: '加载失败', type: 'error'});
             })
@@ -133,19 +133,13 @@ export function put(url, params) {
 
 export function axiosDelete(url, params) {
     return new Promise((resolve, reject) => {
-        // axios.delete(url, Qs.stringify(params))
-        axios.delete(url, params)
-            .then(res => {
+        axios.delete(url, {
+            data: params
+        }).then(res => {
                 resolve(res.data);
-
-                // Loading.service(true).close();
-                //  Message({message: '请求成功', type: 'success'});
             })
             .catch(err => {
                 reject(err.data);
-                console.log(url,err);
-                // Loading.service(true).close();
-                // Message({message: '加载失败', type: 'error'});
             })
     });
 }

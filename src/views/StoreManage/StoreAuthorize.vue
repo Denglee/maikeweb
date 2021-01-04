@@ -8,7 +8,7 @@
       </el-input>
 
       <div class="formR-main">
-        <el-button icon="el-icon-circle-plus-outline" @click="diaState.diaAdd = true" class="public-btn">店铺授权</el-button>
+        <el-button icon="el-icon-circle-plus-outline" @click="FnBtnAddShow" class="public-btn">店铺授权</el-button>
         <el-button icon="el-icon-folder-add" @click="FnImport" :loading="btnState.btnImport" class="public-btn">导入店铺</el-button>
       </div>
     </el-form>
@@ -17,34 +17,40 @@
               :data="tableArr"
               @selection-change="checkedStore"
               ref="refTable"
+              height="600"
               @row-click="handleRowClick">
-      <el-table-column type="selection" width="55"></el-table-column>
+
+      <el-table-column type="selection""></el-table-column>
       <el-table-column prop="storeName" label="店铺名称"></el-table-column>
-      <el-table-column prop="site" label="站点"></el-table-column>
-      <el-table-column prop="country" label="国家"></el-table-column>
-      <el-table-column prop="platform" label="平台"></el-table-column>
-      <el-table-column prop="sellerId" label="Saller ID"></el-table-column>
-      <el-table-column prop="principalEmail" label="店铺邮箱"></el-table-column>
-      <el-table-column prop="advertAuth" label="广告授权"></el-table-column>
-      <el-table-column prop="principalName" label="负责人"></el-table-column>
-      <el-table-column prop="state" label="店铺授权">
+<!--      <el-table-column prop="site" label="站点"></el-table-column>-->
+<!--      <el-table-column prop="country" label="国家"></el-table-column>-->
+<!--      <el-table-column prop="platform" label="平台"></el-table-column>-->
+<!--      <el-table-column prop="sellerId" label="Saller ID"></el-table-column>-->
+<!--      <el-table-column prop="principalEmail" label="店铺邮箱"></el-table-column>-->
+<!--      <el-table-column prop="advertAuth" label="广告授权"></el-table-column>-->
+<!--      <el-table-column prop="principalName" label="负责人"></el-table-column>-->
+      <el-table-column prop="principalAuth" label="店铺授权">
         <template slot-scope="scope">
-          <div v-if="scope.row.state == 0 " class="status-connect">授权成功</div>
-          <div v-if="scope.row.state == 1 " class="status-break">去授权</div>
+          <div v-if="scope.row.principalAuth == 0 " class="status-connect">授权成功</div>
+          <div v-if="scope.row.principalAuth == 1 " class="status-break">去授权</div>
         </template>
       </el-table-column>
-      <el-table-column prop="time" label="创建时间"></el-table-column>
+      <el-table-column prop="createTime" label="创建时间">
+        <template slot-scope="scope">
+          <span>{{scope.row.createTime | timeFormat}}</span>
+        </template>
+      </el-table-column>
 
-      <el-table-column label="操作" min-width="200px">
+      <el-table-column label="操作">
         <template slot-scope="scope">
           <el-dropdown @command="FnCommand">
             <el-button type="primary">
               编辑<i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
-              <!--<el-dropdown-item command="a" @click="FnCommand( scope.$index, scope.row)">暂停同步</el-dropdown-item>-->
+              <el-dropdown-item :command="{ type:'put', data:scope.row }">更新</el-dropdown-item>
               <el-dropdown-item :command="{ type:'a', data:scope.row }">暂停同步</el-dropdown-item>
-              <el-dropdown-item :command="{ type:'b', data:scope.row }">删除店铺</el-dropdown-item>
+              <el-dropdown-item :command="{ type:'delete', data:scope.row }">删除店铺</el-dropdown-item>
               <el-dropdown-item :command="{ type:'c', data:scope.row }">同步验证</el-dropdown-item>
               <el-dropdown-item :command="{ type:'d', data:scope.row }">财务核算设置</el-dropdown-item>
               <el-dropdown-item :command="{ type:'e', data:scope.row }">分配负责人</el-dropdown-item>
@@ -59,14 +65,15 @@
     <el-pagination
         background
         layout="prev, pager, next, total, jumper"
-        :total="searchForm.pageTotalRows"
-        :page-size="searchForm.pageListRows"
+        :total="pageArr.pageTotalRows"
+        :page-size="searchForm.pageSize"
         @current-change="PageCurrent">
     </el-pagination>
 
+
     <!--添加授权店铺信息  -->
     <el-dialog :append-to-body="true"
-               title="添加店铺授权"
+               :title="diaState.diaAddTitle"
                :visible.sync="diaState.diaAdd"
                custom-class="public-dialog"
                :close-on-click-modal="false"
@@ -143,17 +150,22 @@
 import { addStoreAuth, updateStoreAuth, selectStoreAuth, delStoreAuth, delStoreAuthList } from "@/assets/js/api";
 export default {
   name: "StoreAuthorize",
+  inject:['reLoad'],
   data() {
     return {
-
+      pageArr:{
+        pageTotalRows:1
+      },
       searchForm: {  //查找form data
         storeName: '',
-        pageTotalRows:100,
-        pageListRows:20,
+        pageSize:10,
+        pageNum:1,
       },
 
       diaState: {   //弹出框状态
         diaAdd: false,
+        submitType:'add',
+        diaAddTitle:'添加店铺授权',
       },
 
       btnState: {         //按钮状态
@@ -164,66 +176,39 @@ export default {
 
       checkedRows:[],
 
-      tableArr: [
-        {
-          id: 'shop1',
-          storeName: 'test01',
-          platform: 'amazon',
-          principalEmail:'100@qq.com',
-          site:'2',
-          country:'21',
-          principalName : 'boss',
-          remark: '测试',
-          sellerId: 'AD12311',
-          authToken: '101141',
-          advertAuth:'',
-        },
-        {
-          id: 'shop2',
-          storeName: 'test01',
-          platform: 'amazon',
-          principalEmail:'100@qq.com',
-          site:'2',
-          country:'21',
-          principalName : 'boss',
-          remark: '测试',
-          sellerId: 'AD12311',
-          authToken: '101141',
-          advertAuth:'',
-        },
-      ],    //table数据
+      tableArr: [],    //table数据
 
       /*国家联动数据*/
       options: [
         {
-          value: 2,
+          value: '2',
           label: '北美站点',
           id:20,
           children: [
             {
-              value: 21,
+              value: '21',
               label: '美国',
               id:201,
             },
             {
-              value: 22,
+              value: '22',
               label: '加拿大',
               id:202,
             },
           ]
         },
         {
-          value: 1,
+          value: '1',
           label: '欧洲站点',
           id:10,
           children: [
             {
-              value: 11,
+              value: '11',
               label: '英国',
               id:101,
             },
             {
-              value: 12,
+              value: '12',
               label: '德国',
               id:102,
             }
@@ -237,16 +222,17 @@ export default {
         {name:'负责人3', id:'300'},
       ],
 
+
       addForm: {  /*添加弹窗表单数据*/
-        storeName: 'test01',
-        platform: 'amazon',
-        countryData:[2,21],
-        site:'2',
-        country:'21',
-        principalName :'200',
-        remark: '测试',
-        sellerId: 'AD12311',
-        authToken: '101141',
+        storeName: '',
+        platform: '',
+        countryData:['2','21'],
+        site:'',
+        country:'',
+        principalName :'',
+        remark: '',
+        sellerId: '',
+        authToken: '',
       },
       nowCountyName: '',   //当前选中国家名称
       nowCountySite: '',   //当前校对域名
@@ -261,8 +247,10 @@ export default {
     },
 
     /*分页*/
-    PageCurrent(val){
-      console.log(val);
+    PageCurrent(page){
+      console.log(page);
+      this.searchForm.pageNum = page;
+      this.FnSelectStoreAuth();
     },
 
     /* 1、 编辑选中  */
@@ -286,12 +274,6 @@ export default {
       document.body.removeChild(textareaEl);
       console.log("复制成功");
       this.$message.success('复制成功');
-      // this.$message({
-      //   message: '复制成功',
-      //   type: 'success',
-      //   duration: 3000,
-      //   // offset: 40,
-      // });
       return res;
 
     },
@@ -324,21 +306,50 @@ export default {
       console.log(obj.name);//我这边的name就是对应label的*/
     },
 
+    /* 国家 多选 级联 */
+    FnChooseCounty(val){
+      console.log(val);
+      this.addForm.site = val[0];
+      this.addForm.country = val[1];
+    },
+
+    /*导入*/
+    FnImport(){},
+
+    /*添加显示*/
+    FnBtnAddShow(){
+      this.diaState.diaAdd = true;
+      this.diaState.submitType='add';
+      this.diaState.diaAddTitle='添加店铺授权';
+      // this.$refs['RefAddForm'].resetFields();
+    },
+
     /*添加 提交 */
     FnBtnAdd(formName) {
       let that = this;
+      let submitType = this.diaState.submitType;
       that.$refs[formName].validate((valid) => {
         this.GLOBAL.btnStateChange(this, 'btnState', 'btnSubmit');
         if (valid) {
           console.log(this.addForm);
 
-          // return;
-          addStoreAuth(this.addForm).then(res => {
-            console.log(res.data);
-            this.$message.success('添加成功');
-          }).catch(res => {
+          if(submitType == 'add'){
+            addStoreAuth(this.addForm).then(res => {
+              console.log(res.message);
+              this.GLOBAL.axiosSuc(that,res.message);
+            }).catch(res => {
+              console.log(res.message);
+            })
+          } else {
+            console.log('put');
+            updateStoreAuth(this.addForm).then(res => {
+              console.log(res.message);
+              this.GLOBAL.axiosSuc(that,res.message);
+            }).catch(res => {
+              console.log(res.message);
+            })
+          }
 
-          })
         };
       })
     },
@@ -352,57 +363,70 @@ export default {
     },
 
 
-    /* 国家 多选 级联 */
-    FnChooseCounty(val){
-      console.log(val);
-      this.site = val[0];
-      this.country = val[1];
-    },
-
-
     /*表格 tr 操作 */
     FnCommand(val) {
-      console.log(val)
-      console.log(val.type);
-      console.log(val.data.id);
-      if(val.type == 'a'){
-        this.FnDelStoreAuthList();
+      let data = val.data;
+      console.log(data);
+
+      /*更新店铺授权*/
+      if(val.type == 'put'){
+        this.diaState.diaAdd = true;
+        this.diaState.submitType = 'put';
+        this.diaState.diaAddTitle = '更新店铺授权';
+        this.addForm = data;
+        let arr =[];
+        arr.push(data.site,data.country);
+        console.log(arr);
+        this.addForm.countryData = arr;
+        console.log( this.addForm);
       }
-    },
-    /*单个 删除 店铺*/
-    FnDelStoreAuth(){
-      delStoreAuth().then(res=>{
-        console.log(res);
-      }).catch(res=>{
 
-      });
-    },
+      /*删除操作*/
+      if(val.type == 'delete'){
+        // this.FnDelStoreAuthList();
+        this.FnDelStoreAuth(data.sellerId);
 
-    /*多个删除 店铺 */
-    FnDelStoreAuthList(){
-      let idArr = [];
-      this.checkedRows.forEach((row)=>{
-        idArr.push(row.id);
-      });
-      console.log(idArr);
-    },
-
-    FnImport(){
-
+      }
     },
 
     /* 查询 获取 table */
     FnSelectStoreAuth(){
       selectStoreAuth(this.searchForm).then(res=>{
         console.log(res);
-      }).then(res=>{
-        consol.log(res);
+        this.tableArr = res.data;
+        this.pageArr.pageTotalRows=res.total;
+      }).catch(res=>{
+        console.log(res);
+      })
+    },
+
+    /* id 删除 table */
+    FnDelStoreAuth(id){
+      delStoreAuth(id).then(res=>{
+        // console.log(res);
+        this.GLOBAL.axiosSuc(this,res.message);
+      }).catch(res=>{
+        console.log(res);
+      })
+    },
+    /*多个、批量 删除 店铺 */
+    FnDelStoreAuthList(){
+      console.log('sellerId');
+      let sellerId = [];
+      this.checkedRows.forEach((row)=>{
+        sellerId.push(row.sellerId);
+      });
+      delStoreAuthList(sellerId).then(res=>{
+        console.log(res);
+      }).catch(res=>{
+        console.log(res)
       })
     },
 
   },
+
   created() {
-    // this.FnSelectStoreAuth();
+    this.FnSelectStoreAuth();
   },
 }
 </script>

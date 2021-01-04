@@ -9,9 +9,9 @@
              background-color="#001529"
              text-color="#fff"
              active-text-color="#fff"
-             default-active="this.$route.path"
+             :default-active="this.$route.path"
              :collapse="NavIsCollapse"
-             :default-openeds='["0"]'
+             :default-openeds='["1-0"]'
     >
       <!--一级导航-->
       <el-submenu class="submenu-box"
@@ -31,7 +31,7 @@
                         :index="index1+'' +'-'+ index2+''" :dataIndex2="index1+'' +'-'+ index2+''">
             <router-link :to="{path:'/'+subItems.controller+'/'+subItems.action}"
                          :dataPath="subItems.controller+'/'+subItems.action">
-              {{ subItems.name }}
+              <span>{{ subItems.name }}</span>
             </router-link>
           </el-menu-item>
 
@@ -97,6 +97,11 @@ export default {
       this.dataNum = trainerId;
       // this.$routerConfigure.push({path:trainerId});
     },
+
+    // FnSubGo(e){
+    //   let link = e.currentTarget.dataset.datapath;
+    //   console.log(link);
+    // },
   },
 
   created() {
@@ -109,6 +114,11 @@ export default {
       // UserInfo: 'StoreTagNav/getsUserInfo',
       NavIsCollapse: "StoreTagNav/getNavIsCollapse",
     }),
-  }
+  },
+
+  mounted(){
+    let path = this.$route.path;
+    console.log(path);
+  },
 };
 </script>

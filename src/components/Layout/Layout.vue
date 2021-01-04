@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-box row-bg">
+  <div class="layout-box row-bg clearfix">
     <!--左侧侧边导航-->
     <div  class="layoutL-box" :style="{width:navLeftWidth}">
       <LeftNav :style="{width:navLeftWidth}"></LeftNav>
@@ -71,8 +71,8 @@ export default {
     //获取 store 中 StoreTagNav。js 的 gState 页面通过{{gState}}直接用
     ...mapGetters({
       navLeftWidth: "StoreTagNav/getNavLeftWidth",
-    }),
-  }
+    })
+  },
 
 }
 </script>

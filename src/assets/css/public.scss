@@ -118,6 +118,7 @@ input:-webkit-autofill {
   //border: solid 1px #ddd;
   background-color: #fff;
   border-radius: 6px;
+  overflow: auto;
 }
 .public-form{
   //margin-bottom: 20px;
@@ -166,6 +167,16 @@ input:-webkit-autofill {
 .public-table {
   border-radius: 6px;
   margin: 10px auto 20px;
+  width: 100%;
+
+  //.el-table__header-wrapper{
+  //  display: none;
+  //}
+  //.el-table__header,
+  //.el-table__body{
+  //  width: 100px !important;
+  //  border: solid 1px red;
+  //}
   thead{
     color:#000;
     .is-sortable{

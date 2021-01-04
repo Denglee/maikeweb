@@ -39,6 +39,7 @@ sessionStorage.clear();
 */
 
 import { get, post } from './axios';
+import {Message} from 'element-ui';
 
 // 全局 js
 let localUrl = '';  //全局路径
@@ -103,10 +104,23 @@ function btnStateChange(that, id, val,  state = true,time=1500){
     //this.GLOBAL.btnStateChange(this,'loadState','searchLoad');
 }
 
+/* axios 成功回调后的 弹窗提示 和 刷新页面 */
+function axiosSuc(that=this, msg, time=1500){
+    Message({
+        type:'success',
+        message:msg,
+        duration: 500,
+        offset: 40,
+    });
+    setTimeout(()=>{
+        that.reLoad()
+    },time)
+}
+
 export default {
     localUrl,
     getEleBase64:getEleBase64,
     btnStateChange:btnStateChange,
-
+    axiosSuc:axiosSuc,
     customerType,
 }

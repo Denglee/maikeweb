@@ -26,7 +26,9 @@
   color: #fff !important;
 }
 .layout-box {
-  display: flex;
+  //display: flex;
+  //overflow: auto;
+
   /*回到顶部*/
   .el-backtop{
     z-index: 2020;
@@ -53,8 +55,8 @@
 
 /*layout-left 左侧导航*/
 .layoutL-box{
-  flex: 0 0 auto;
   height: 100vh;
+  float: left;
   @include scrollBar();
   .layoutLeft-nav {
     //width: 100%;
@@ -99,7 +101,6 @@
 
 /*layout-left 右边主题内容*/
 .layoutR-main{
-  flex: 1 1 auto;
 
   .layoutR-header{
     width: 100%;
@@ -107,12 +108,13 @@
   }
 }
 .layoutR-contain{
-  width: 100%;
+  //width: 100%;
   min-height: calc(100vh - 72px);
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow: auto;
   background-color: $color-linghtWhite;
-  display: flex;
+  //border:solid 1px red;
+  //display: flex;
   //border: solid 1px #ffa300;
 }
 

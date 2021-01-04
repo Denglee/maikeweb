@@ -68,7 +68,6 @@ const staticRoute = [
             /*ManageCenter  后台管理中心*/
 
 
-
             /*MessageCenter 消息中心*/
             {
                 path: 'MessageCenter/MessageList',  /*消息列表*/
