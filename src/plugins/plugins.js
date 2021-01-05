@@ -58,6 +58,7 @@ import {
     Message,
     Upload,
     Cascader,
+    Transfer,
 } from 'element-ui';
 
 
@@ -111,6 +112,7 @@ Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Upload);
 Vue.use(Cascader);
+Vue.use(Transfer);
 
 // import ElementUI from 'element-ui';
 // import '@/assets/theme/index.css'

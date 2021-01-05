@@ -56,6 +56,8 @@ const staticRoute = [
             },
 
 
+
+
             /* Finance 财务*/
             {
                 path: 'Finance/SettlementDetails',  /*结算明细*/
@@ -66,6 +68,18 @@ const staticRoute = [
 
 
             /*ManageCenter  后台管理中心*/
+
+
+
+            /* PowerManage 角色权限管理*/
+            {
+                path: 'PowerManage/PowerManage',  /*业务系统角色*/
+                name: 'PowerManage',
+                component: () => import(/* webpackChunkName: "PowerManage" */ '../views/PowerManage/PowerManage'),
+                meta: {title: '业务系统角色',keepAlive: true},
+            },
+
+
 
 
             /*MessageCenter 消息中心*/

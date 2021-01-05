@@ -2,7 +2,7 @@
   <div class="tabs-main">
 <!--    <div>消息列表</div>-->
 
-    <el-tabs :tab-position="tabPosition" id="tabs-message" v-model="tabActiveName" @tab-click="FnTab">
+    <el-tabs :tab-position="tabPosition" id="tabs-message" v-model="tabActiveName" @tab-click="FnChangeTab">
       <el-tab-pane lazy name="name1">
         <div slot="label">
           <span>全部消息</span>
@@ -191,7 +191,7 @@ export default {
       },
 
       /*tab 切换点击事件  */
-      FnTab(tab,e){
+      FnChangeTab(tab,e){
         console.log(tab);
         console.log(e);
       },

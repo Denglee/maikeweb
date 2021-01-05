@@ -22,6 +22,19 @@ let menu = {
         //     ]
         // },
         {
+            id: "110",
+            name: "角色权限管理",
+            fonts: "el-icon-s-tools",
+            sub_menu: [
+                {
+                    id: "1111",
+                    action: "PowerManage",
+                    controller: "PowerManage",
+                    name: "业务系统角色",
+                },
+            ]
+        },
+        {
             id: "150",
             name: "店铺管理",
             fonts: "el-icon-circle-check",

@@ -357,7 +357,7 @@ export default {
     /* 添加 取消  */
     FnCloseAdd() {
       this.GLOBAL.btnStateChange(this, 'btnState', 'btnCancel')
-      this.diaState.diaAdd = false;
+      // this.diaState.diaAdd = false;
       console.log(this.addForm);
       this.$refs['RefAddForm'].resetFields();
     },
