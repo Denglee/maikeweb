@@ -210,26 +210,26 @@
 </script>
 <style lang="scss">
   #tabs-power{
+    display: flex;
     .el-tabs__nav-wrap.is-left:after{
       width: 0;
     }
   }
-
   .roleL-form,
   #tabs-power > .el-tabs__header{
     width: 300px;
-    //border: solid 1px red;
     background-color: #fff;
   }
   .powerR-subnav,
   #tabs-power > .el-tabs__content {
-    width: call( 100% * 300px );
+    width: calc( 100% - 300px );
     //border: solid 1px red;
     background-color: #fff;
   }
 
   .roleL-form{
-    border-right: solid 10px #E4E7ED;
+    //border-right: solid 10px #E4E7ED;
+    margin-right: 10px;
     padding: 10px;
     .public-input {
       width: 160px !important;
@@ -242,6 +242,7 @@
   }
   .powerR-subnav{
     padding: 10px;
+    background-color: #fff;
   }
   .transfer-box{
     .el-input{
