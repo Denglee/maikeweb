@@ -21,7 +21,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /*404*/
 .lostPage-box {
   width: 100%;

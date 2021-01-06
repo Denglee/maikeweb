@@ -23,6 +23,87 @@ const staticRoute = [
         component: Layout,
         children: [
 
+            /*基础信息*/
+            {
+                path: 'BasicInfo/CompanyInfo',  /*企业信息*/
+                name: 'CompanyInfo',
+                component: () => import(/* webpackChunkName: "CompanyInfo" */ '../views/BasicInfo/CompanyInfo'),
+                meta: {title: '企业信息',keepAlive: true},
+            },
+            {
+                path: 'BasicInfo/OrganManage',  /*组织机构管理*/
+                name: 'OrganManage',
+                component: () => import(/* webpackChunkName: "OrganManage" */ '../views/BasicInfo/OrganManage'),
+                meta: {title: '组织机构管理',keepAlive: true},
+            },
+
+
+            /* PowerManage 角色权限管理*/
+            {
+                path: 'PowerManage/PowerManage',  /*业务系统角色*/
+                name: 'PowerManage',
+                component: () => import(/* webpackChunkName: "PowerManage" */ '../views/PowerManage/PowerManage'),
+                meta: {title: '业务系统角色',keepAlive: true},
+            },
+
+
+            /*StoreManage 店铺管理*/
+            {
+                path: 'StoreManage/StoreAuthorize',  /* 店铺授权 */
+                name: 'StoreAuthorize',
+                component: () => import(/* webpackChunkName: "StoreAuthorize" */ '../views/StoreManage/StoreAuthorize'),
+                meta: {title: '店铺授权',keepAlive: true},
+            },
+            {
+                path: 'StoreManage/AdjustEntity',  /* 店铺核算主体 */
+                name: 'AdjustEntity',
+                component: () => import(/* webpackChunkName: "AdjustEntity" */ '../views/StoreManage/AdjustEntity'),
+                meta: {title: '核算主体',keepAlive: true},
+            },
+
+
+            /*Parameter 参数设置*/
+            {
+                path: 'Parameter/ApplyManage',  /* 应用管理 */
+                name: 'ApplyManage',
+                component: () => import(/* webpackChunkName: "ApplyManage" */ '../views/Parameter/ApplyManage'),
+                meta: {title: '应用管理',keepAlive: true},
+            },
+
+
+            /*PageManage 页面管理*/
+            {
+                path: 'PageManage/BusinessSystem',  /* 业务系统页面 */
+                name: 'BusinessSystem',
+                component: () => import(/* webpackChunkName: "ApplyManage" */ '../views/PageManage/BusinessSystem'),
+                meta: {title: '业务系统页面',keepAlive: true},
+            },
+
+
+            /*MessageCenter 消息中心*/
+            {
+                path: 'MessageCenter/MessageList',  /*消息列表*/
+                name: 'MessageList',
+                component: () => import(/* webpackChunkName: "MessageList" */ '../views/MessageCenter/MessageList'),
+                meta: {title: '消息列表',keepAlive: true},
+            },
+
+
+            /*AccountCenter 账户中心*/
+            {
+                path: 'AccountCenter/PersonalInfo',  /*个人信息*/
+                name: 'PersonalInfo',
+                component: () => import(/* webpackChunkName: "PersonalInfo" */ '../views/AccountCenter/PersonalInfo'),
+                meta: {title: '个人信息',keepAlive: true},
+            },
+            {
+                path: 'AccountCenter/AccountSetup',  /*账户设置*/
+                name: 'AccountSetup',
+                component: () => import(/* webpackChunkName: "AccountSetup" */ '../views/AccountCenter/AccountSetup'),
+                meta: {title: '账户设置',keepAlive: true},
+            },
+
+
             /*ProductInfo 产品信息*/
             {
                 path: 'ProductInfo/BrandManage',  /*品牌管理*/
@@ -38,13 +119,6 @@ const staticRoute = [
             },
 
 
-            /*StoreManage 店铺管理*/
-            {
-                path: 'StoreManage/StoreAuthorize',  /* 店铺授权 */
-                name: 'StoreAuthorize',
-                component: () => import(/* webpackChunkName: "StoreAuthorize" */ '../views/StoreManage/StoreAuthorize'),
-                meta: {title: '店铺授权',keepAlive: true},
-            },
 
 
             /*WarehouseManage 仓库管理*/
@@ -70,40 +144,6 @@ const staticRoute = [
             /*ManageCenter  后台管理中心*/
 
 
-
-            /* PowerManage 角色权限管理*/
-            {
-                path: 'PowerManage/PowerManage',  /*业务系统角色*/
-                name: 'PowerManage',
-                component: () => import(/* webpackChunkName: "PowerManage" */ '../views/PowerManage/PowerManage'),
-                meta: {title: '业务系统角色',keepAlive: true},
-            },
-
-
-
-
-            /*MessageCenter 消息中心*/
-            {
-                path: 'MessageCenter/MessageList',  /*消息列表*/
-                name: 'MessageList',
-                component: () => import(/* webpackChunkName: "MessageList" */ '../views/MessageCenter/MessageList'),
-                meta: {title: '消息列表',keepAlive: true},
-            },
-
-
-            /*AccountCenter 账户中心*/
-            {
-                path: 'AccountCenter/PersonalInfo',  /*个人信息*/
-                name: 'PersonalInfo',
-                component: () => import(/* webpackChunkName: "PersonalInfo" */ '../views/AccountCenter/PersonalInfo'),
-                meta: {title: '个人信息',keepAlive: true},
-            },
-            {
-                path: 'AccountCenter/AccountSetup',  /*账户设置*/
-                name: 'AccountSetup',
-                component: () => import(/* webpackChunkName: "AccountSetup" */ '../views/AccountCenter/AccountSetup'),
-                meta: {title: '账户设置',keepAlive: true},
-            },
 
         ],
 

@@ -21,11 +21,11 @@
           v-for="(item, index) in editableTabs"
           :label="item.title"
           :name="item.name">
-          <el-tabs v-model="SubTabActiveName" @tab-click="FnChangeSubTab">
-            <el-tab-pane lazy label="角色用户">
+          <el-tabs v-model="SubTabActiveName" @tab-click="FnChangeSubTab" id="SubTabs-power">
+            <el-tab-pane lazy label="角色用户" name="sub1">
               <TabRoleUsers :checkID="checkID"></TabRoleUsers>
             </el-tab-pane>
-            <el-tab-pane lazy label="角色权限">
+            <el-tab-pane lazy label="角色权限" name="sub2">
               <TabRolePermissions :checkID="checkID"></TabRolePermissions>
             </el-tab-pane>
           </el-tabs>
@@ -137,7 +137,7 @@
         },
 
         tabActiveName: '1',
-        SubTabActiveName:'',
+        SubTabActiveName:'sub2',
         editableTabs: [
           {
             title: '超级管理员',
@@ -211,26 +211,40 @@
 <style lang="scss">
   #tabs-power{
     display: flex;
-    .el-tabs__nav-wrap.is-left:after{
-      width: 0;
+    > .el-tabs__header{
+      width: 300px;
+      background-color: #fff;
+      min-height: 80vh;
+      .el-tabs__nav-wrap.is-left:after{
+        width: 0;
+      }
+      .el-tabs__item.is-left{
+        text-align: left;
+      }
+      .el-tabs__active-bar{
+        left: 0 !important;
+      }
+      .el-tabs__item.is-active {
+        color: #000;
+        background: #f6f8fa;
+      }
+      .el-tabs__item:hover{
+        color: #000;
+        background: #f6f8fa;
+      }
     }
-  }
-  .roleL-form,
-  #tabs-power > .el-tabs__header{
-    width: 300px;
-    background-color: #fff;
-  }
-  .powerR-subnav,
-  #tabs-power > .el-tabs__content {
-    width: calc( 100% - 300px );
-    //border: solid 1px red;
-    background-color: #fff;
+    > .el-tabs__content {
+      width: calc( 100% - 300px );
+      background-color: #fff;
+    }
   }
 
   .roleL-form{
+    width: 300px;
+    background-color: #fff;
     //border-right: solid 10px #E4E7ED;
     margin-right: 10px;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
     .public-input {
       width: 160px !important;
     }
@@ -241,12 +255,19 @@
     }
   }
   .powerR-subnav{
-    padding: 10px;
+    padding: 10px 10px 0 10px;
     background-color: #fff;
+    width: calc( 100% - 300px );
   }
   .transfer-box{
     .el-input{
       width: 150px !important;
     }
   }
+
+  /*二级 tabs*/
+  #SubTabs-power{
+    padding: 10px;
+  }
+
 </style>

@@ -20,15 +20,15 @@
               height="600"
               @row-click="handleRowClick">
 
-      <el-table-column type="selection""></el-table-column>
+      <el-table-column type="selection"></el-table-column>
       <el-table-column prop="storeName" label="店铺名称"></el-table-column>
-<!--      <el-table-column prop="site" label="站点"></el-table-column>-->
-<!--      <el-table-column prop="country" label="国家"></el-table-column>-->
-<!--      <el-table-column prop="platform" label="平台"></el-table-column>-->
-<!--      <el-table-column prop="sellerId" label="Saller ID"></el-table-column>-->
-<!--      <el-table-column prop="principalEmail" label="店铺邮箱"></el-table-column>-->
-<!--      <el-table-column prop="advertAuth" label="广告授权"></el-table-column>-->
-<!--      <el-table-column prop="principalName" label="负责人"></el-table-column>-->
+      <el-table-column prop="site" label="站点"></el-table-column>
+      <el-table-column prop="country" label="国家"></el-table-column>
+      <el-table-column prop="platform" label="平台"></el-table-column>
+      <el-table-column prop="sellerId" label="Saller ID"></el-table-column>
+      <el-table-column prop="principalEmail" label="店铺邮箱"></el-table-column>
+      <el-table-column prop="advertAuth" label="广告授权"></el-table-column>
+      <el-table-column prop="principalName" label="负责人"></el-table-column>
       <el-table-column prop="principalAuth" label="店铺授权">
         <template slot-scope="scope">
           <div v-if="scope.row.principalAuth == 0 " class="status-connect">授权成功</div>

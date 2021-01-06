@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "ClassifiedManage",
+  name: "ClassifiedManage",  //分类管理
   data(){
     return{
 

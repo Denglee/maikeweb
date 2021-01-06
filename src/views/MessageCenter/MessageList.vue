@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-main">
+  <div class="tabs-main" style="background-color: #fff;">
 <!--    <div>消息列表</div>-->
 
     <el-tabs :tab-position="tabPosition" id="tabs-message" v-model="tabActiveName" @tab-click="FnChangeTab">
@@ -33,7 +33,6 @@
                 value-format="yyyy-MM-dd">
             </el-date-picker>
 
-
             <!--搜索-->
             <el-button icon="el-icon-search" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="public-btn">搜索</el-button>
 
@@ -42,6 +41,7 @@
               <el-button icon="el-icon-delete" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="public-btn">删除</el-button>
               <el-button icon="el-icon-refresh" @click="FnSearchShop" :loading="btnState.btnSearchLoad" class="public-btn">刷新</el-button>
             </div>
+
           </el-form>
 
           <!-- 表格-->

@@ -4,7 +4,7 @@
 
 <script>
 export default {
-    name: "AccountSetup",
+    name: "AccountSetup",   //账户设置
     data(){
      return{
      
