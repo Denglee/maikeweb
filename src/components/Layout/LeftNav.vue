@@ -9,14 +9,13 @@
              background-color="#001529"
              text-color="#fff"
              active-text-color="#fff"
-             :default-active="this.$route.path"
+             :default-active="defaultActive"
              :collapse="NavIsCollapse"
-             :default-openeds='["1-0"]'
     >
       <!--一级导航-->
       <el-submenu class="submenu-box"
                   popper-class="subMenuL-popNav"
-                  :index="index1 +''" v-for="(navItem , index1) in StateNavList.data" :key="index1">
+                  :index="index1 +'' " v-for="(navItem , index1) in StateNavList.data" :key="index1">
 
         <template slot="title">
           <i class="iconNav" :class="navItem.fonts"></i>
@@ -28,11 +27,23 @@
 
           <el-menu-item v-if="subItems.action ==''"></el-menu-item>
           <el-menu-item v-else
-                        :index="index1+'' +'-'+ index2+''" :dataIndex2="index1+'' +'-'+ index2+''">
+                        :index="index1+'' +'-'+ index2+''" :dataIndex2="index1+'-'+ index2"
+          >
+<!--            <span-->
+<!--               @click="FnSubGo"-->
+<!--                   :data-path="subItems.controller+'/'+subItems.action"-->
+<!--                   :data-index2="index1+'-'+ index2"-->
+<!--            >{{ subItems.name }}</span>-->
             <router-link :to="{path:'/'+subItems.controller+'/'+subItems.action}"
-                         :dataPath="subItems.controller+'/'+subItems.action">
-              <span>{{ subItems.name }}</span>
+                         :data-path="subItems.controller+'/'+subItems.action"
+            @click.native="FnActiveNav(index1+'-'+ index2)">
+              {{ subItems.name }}
             </router-link>
+
+<!--            <a href="javascript:;" @click="layoutGoPath(subItems.controller, subItems.action, subItems.name, index1+'-'+ index2)">-->
+<!--              {{ subItems.name }}-->
+<!--            </a>-->
+
           </el-menu-item>
 
         </el-menu-item-group>
@@ -53,6 +64,8 @@ export default {
     return {
       localUrl: this.GLOBAL.localUrl,
       StateNavList: menu,
+
+      defaultActive:"3-0",
     };
   },
 
@@ -92,24 +105,79 @@ export default {
 
     goNext(e) {
       console.log(e);
-      let trainerId = e.currentTarget.dataset.datanum;
+      let trainerId = e.currentTarget.dataset.index2;
       console.log(`${trainerId}`);
       this.dataNum = trainerId;
       // this.$routerConfigure.push({path:trainerId});
     },
 
-    // FnSubGo(e){
-    //   let link = e.currentTarget.dataset.datapath;
-    //   console.log(link);
-    // },
+    layoutGoPath(path1,path2,name,val1){
+      // console.log(this.tagPages);
+      // console.log(this.openedPageList2);
+      // let path = '/'+path1+''+'/'+''+path2+'';
+      // console.log(path);
+      // let openedPageList2 = this.openedPageList2;
+      // if(openedPageList2.length == 0){
+      //   console.log(`127--  ${path}`);
+      //   openedPageList2.push({
+      //     name:name,
+      //     path: path,
+      //     title: '',
+      //   });
+      //   console.log(this.openedPageList2)
+      //   this.actTagPages(this.openedPageList2);
+      // } else {
+      //   console.log(openedPageList2);
+      //   let hasSome = openedPageList2.some(item=>{
+      //     if(item.path == path){
+      //       return true
+      //     }
+      //   })
+      //   console.log(hasSome);
+      //   if(!hasSome){
+      //     openedPageList2.push({
+      //       name:name,
+      //       path: path,
+      //       title: '',
+      //     });
+      //     console.log(openedPageList2);
+      //     this.actTagPages(openedPageList2);
+      //   }
+      // }
+      //
+      // this.$router.push({
+      //   path:path,
+      // });
+
+
+      console.log(val1);
+      this.defaultActive = val1
+      window.sessionStorage.setItem('defaultActive',val1);
+
+    },
+
+    /*保存导航active*/
+    FnActiveNav(val1){
+      console.log(val1);
+      this.defaultActive = val1
+      window.sessionStorage.setItem('defaultActive',val1);
+
+    },
   },
 
   created() {
-    // this.getNavObj();
+    let defaultActive = sessionStorage.getItem('defaultActive');
+    if(defaultActive){
+      console.log('in'+defaultActive);
+      this.defaultActive = defaultActive;
+    }
+
+
   },
   computed: {
     //获取 store 中 StoreTagNav。js 的 gState 页面通过{{gState}}直接用
     ...mapGetters({
+      tagPages: "StoreActiveNav/getsTagPages",
       // StateNavList: "StoreTagNav/getNavList",
       // UserInfo: 'StoreTagNav/getsUserInfo',
       NavIsCollapse: "StoreTagNav/getNavIsCollapse",
@@ -118,7 +186,15 @@ export default {
 
   mounted(){
     let path = this.$route.path;
-    console.log(path);
+
+    // this.navConfig = [
+    //   {index:'1',path:['/system/aa','/system/bb','/system/cc']},
+    // ];
+    // let thisNav = this.navConfig.find(item =>{
+    //   return item.path.includes(path);
+    // });
+    // this.defaultOpeneds = [thisNav.index];
+    // console.log(path);
   },
 };
 </script>

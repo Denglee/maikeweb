@@ -1,7 +1,7 @@
 <template>
   <div class="public-main">
 
-    <el-form :model="roleForm" class="addForm-box"  ref="refRoleForm" label-width="120px" label-position="left">
+    <el-form :model="roleForm" class="person-form"  ref="refRoleForm" label-width="120px" label-position="left">
 
       <el-form-item label="员工头像">
         <div style="display: flex;align-items: center;">
@@ -114,10 +114,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .addForm-box{
+  .person-form{
+    padding:0 40px;
     .el-input,
     .el-select{
       width: 320px !important;
     }
+
   }
 </style>

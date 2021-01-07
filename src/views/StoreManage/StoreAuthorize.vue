@@ -385,7 +385,6 @@ export default {
       if(val.type == 'delete'){
         // this.FnDelStoreAuthList();
         this.FnDelStoreAuth(data.sellerId);
-
       }
     },
 

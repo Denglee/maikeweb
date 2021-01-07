@@ -54,7 +54,19 @@ let menu = {
                     id: "1512",
                     action: "AdjustEntity",
                     controller: "StoreManage",
-                    name: "核算主体"
+                    name: "店铺核算主体"
+                },
+                {
+                    id: "1514",
+                    action: "AdjustStore",
+                    controller: "StoreManage",
+                    name: "财务核算店铺"
+                },
+                {
+                    id: "1513",
+                    action: "StoreEmail",
+                    controller: "StoreManage",
+                    name: "店铺邮箱"
                 },
             ]
         },
