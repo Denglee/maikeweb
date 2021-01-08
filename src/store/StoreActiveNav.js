@@ -9,23 +9,30 @@ const state = {
     cachedPageName: [],
 
     tagPages: [],
+
+    NavDefaultActive:'',
 }
 
 const getters= {
-    // 监听 获取state 中的 stateName值
+
+    /*获取 导航 默认展开 */
+    getNavActive:(state, NavDefaultActive)=>{
+        return state.NavDefaultActive;
+    },
+
+    /*监听 获取state 中的 stateName值*/
     getsTagPages(state){
         let tagPages = state.tagPages;
-
         if(tagPages == undefined || tagPages.length ==0){
-            console.log(tagPages);
+            // console.log(tagPages);
             let tagPages = JSON.parse(sessionStorage.getItem("openedPageList2"));
-            console.log(tagPages);
+            // console.log(tagPages);
             if (tagPages) {
                 state.tagPages = tagPages;
                 return state.tagPages;
             }
         }else{
-            console.log(tagPages);
+            // console.log(tagPages);
             return  state.tagPages;
         }
     },
@@ -33,12 +40,21 @@ const getters= {
 };
 
 const mutations = {
+    /*修改 导航默认展开*/
+    mutChangeNavActive(state, data) {
+        // console.log(data);
+        sessionStorage.setItem('NavActive',data);
+        state.NavDefaultActive = data;
+    },
+
+    /* 修改 */
     mutTagPages(state,data){
         console.log(data);
         state.tagPages= data;
         return  state.tagPages;
     },
 
+    /*新增 tag*/
     addTagNav(state, data){
         // console.log(data);
         if (state.openedPageList.some(v => v.path === data.path)) return;
@@ -50,6 +66,8 @@ const mutations = {
         state.cachedPageName.push(data)
 
     },
+
+    /*删除 tag */
     removeTagNav(state, data){
         if(data){
             for(let [i, v] of state.openedPageList.entries()){
@@ -75,8 +93,16 @@ const mutations = {
 }
 
 const actions = {
+
+    /*提交 导航默认展开 */
+    actChangeNavActive({commit},res) {
+        // console.log(res);
+        return commit('mutChangeNavActive',res);
+    },
+
+    /*tag导航修改*/
     actTagPages({commit},name){
-        console.log(name);
+        // console.log(name);
         window.sessionStorage.setItem('openedPageList2',JSON.stringify(name));
         return commit ('mutTagPages',name);    //mutationsName 是mutations 中的 mutationsName(state)
     },

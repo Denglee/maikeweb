@@ -3,21 +3,9 @@ const Layout = () => import(/* webpackChunkName: "Layout" */ '@/components/Layou
 const staticRoute = [
     {
         path: '/',
-        redirect: '/Index',
+        redirect: '/BasicInfo/CompanyInfo',
     },
 
-    {
-        path: '/Index',
-        component: Layout,
-        children: [
-            {
-                path: '',
-                name:'index',
-                component: () => import(/* webpackChunkName: "Index" */ '../views/Index/index'),
-                meta: {title: '首页'}
-            },
-        ]
-    },
     {
         path: '/',
         component: Layout,

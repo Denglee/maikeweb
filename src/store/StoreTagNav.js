@@ -18,6 +18,7 @@ const getters = {
     getNavLeftWidth:(state, navLeftWidth)=>{
         return state.navLeftWidth;
     },
+
     /*获取 左侧导航状态 */
     getNavIsCollapse:(state, navIsCollapse)=>{
         return state.navIsCollapse;
@@ -54,28 +55,24 @@ const getters = {
         return state.StateNavList;
     },
 
-    /*获取 员工班次*/
-    GetStaffClasses:(state, staffClasses)=>{
-        return state.staffClasses;
-    }
 };
 
 const mutations = {
 
     /*修改 左侧导航宽度*/
     mutChangeLeftWidth(state, data) {
-        console.log(data);
+        // console.log(data);
         state.navLeftWidth = data;
     },
     /*修改 左侧导航状态*/
     mutChangeNavIsCollapse(state, data) {
-        console.log(data);
+        // console.log(data);
         state.navIsCollapse = data;
     },
 
     /*保存用户信息*/
     mutSetName(state, data) {
-        console.log(data);
+        // console.log(data);
         let StorageData=JSON.stringify(data);
         localStorage.setItem('userInfo', StorageData);
         // if (name) {
@@ -115,25 +112,18 @@ const mutations = {
         state.StateNavList = data;
     },
 
-    /*保存班次*/
-    mutSaveStaffClasses(state, data) {
-        console.log(data);
-        state.staffClasses = data;
-    },
-
-
-
 };
 
 const actions = {
     /*修改 左侧导航宽度*/
     actChangeLeftWidth({commit},res) {
-        console.log(res);
+        // console.log(res);
         return commit('mutChangeLeftWidth',res);
     },
     /*获取 左侧导航状态 */
     actChangeNavIsCollapse({commit},res) {
-        console.log(res);
+        // console.log(res);
+        window.sessionStorage.setItem('isCollapse',res);
         return commit('mutChangeNavIsCollapse',res);
     },
     getNavIsCollapse:(state, navIsCollapse)=>{
@@ -167,9 +157,9 @@ const actions = {
 
             // 将菜单数据扁平化为一级
             function flatNavList(arr) {
-                console.log(arr);
+                // console.log(arr);
                 for (let v of arr) {
-                    console.log(arr);
+                    // console.log(arr);
                     if (v.child && v.child.length) {
                         flatNavList(v.child)
                     } else {
@@ -192,11 +182,6 @@ const actions = {
     /*登出*/
     ACTlogout({commit}) {
         return commit('mutLOginOut');
-    },
-
-    /*保存班次*/
-    ActSaveStaffClasses({commit},res) {
-        return commit('mutSaveStaffClasses',res);
     },
 
 };

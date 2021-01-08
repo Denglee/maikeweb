@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="headerTop-contain">
-      <div @click="FnNavChange" v-model="isCollapse" class="header-topLeft">
-        <i class="el-icon-s-fold" v-if="!isCollapse"></i>
+      <div @click="FnNavChange" v-model="navIsCollapse" class="header-topLeft">
+        <i class="el-icon-s-fold" v-if="!navIsCollapse"></i>
         <i class="el-icon-s-unfold" v-else></i>
       </div>
 
@@ -35,32 +35,31 @@
     </div>
 
     <!--更换密码弹出-->
-<!--    <el-dialog :append-to-body="true" title="更换密码"-->
-<!--               :visible.sync="diaChangePass"-->
-<!--               custom-class="passAlert"-->
-<!--               width="600px">-->
-<!--      <el-form :model="changePassForm" status-icon :rules="changeRules" ref="changePassForm" label-width="100px"-->
-<!--               class="demo-ruleForm">-->
-<!--        <el-form-item label="旧密码" prop="oldPass">-->
-<!--          <el-input type="password" :show-password="true" v-model="changePassForm.oldPass" autocomplete="off"-->
-<!--                    clearable></el-input>-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="新密码" prop="newPass">-->
-<!--          <el-input type="password" :show-password="true" v-model="changePassForm.newPass" autocomplete="off"-->
-<!--                    clearable></el-input>-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="确认密码" prop="checkPass">-->
-<!--          <el-input type="password" :show-password="true" v-model="changePassForm.checkPass" autocomplete="off"-->
-<!--                    clearable></el-input>-->
-<!--        </el-form-item>-->
-<!--        <el-form-item>-->
-<!--          <el-button size="small" class="public-btn" @click="submitForm('changePassForm')">提交</el-button>-->
-<!--          <el-button size="small" @click="resetForm('changePassForm')">重置</el-button>-->
-<!--        </el-form-item>-->
-<!--      </el-form>-->
-<!--    </el-dialog>-->
+<!--    <el-dialog :append-to-body="true" title="更换密码"
+               :visible.sync="diaChangePass"
+               custom-class="passAlert"
+               width="600px">
+      <el-form :model="changePassForm" status-icon :rules="changeRules" ref="changePassForm" label-width="100px"
+               class="demo-ruleForm">
+        <el-form-item label="旧密码" prop="oldPass">
+          <el-input type="password" :show-password="true" v-model="changePassForm.oldPass" autocomplete="off"
+                    clearable></el-input>
+        </el-form-item>
+        <el-form-item label="新密码" prop="newPass">
+          <el-input type="password" :show-password="true" v-model="changePassForm.newPass" autocomplete="off"
+                    clearable></el-input>
+        </el-form-item>
+        <el-form-item label="确认密码" prop="checkPass">
+          <el-input type="password" :show-password="true" v-model="changePassForm.checkPass" autocomplete="off"
+                    clearable></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button size="small" class="public-btn" @click="submitForm('changePassForm')">提交</el-button>
+          <el-button size="small" @click="resetForm('changePassForm')">重置</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>-->
 
-    <!--<el-button size="small" @click="reLoad()">刷新</el-button>-->
 
   </div>
 </template>
@@ -113,8 +112,6 @@ export default {
 
     return {
 
-      isCollapse: this.navIsCollapse,
-
       // cityName:'',
       localUrl: this.GLOBAL.localUrl,
 
@@ -151,16 +148,20 @@ export default {
       actChangeNavIsCollapse: "StoreTagNav/actChangeNavIsCollapse",
     }),
 
-    /*左边导航宽度修改*/
-    FnNavChange() {
-      this.isCollapse = !this.isCollapse;
-      if (this.isCollapse == false) {
+    /*伸缩状态+宽度*/
+    IsCollapseWidth(val){
+      if (val == false || val == 'false') {
         this.actChangeLeftWidth('200px');
         this.actChangeNavIsCollapse(false);
       } else {
         this.actChangeLeftWidth('64px');
         this.actChangeNavIsCollapse(true);
       }
+    },
+    /*左边导航宽度修改*/
+    FnNavChange() {
+      let state =  !this.navIsCollapse;
+      this.IsCollapseWidth(state);
     },
 
 
@@ -185,7 +186,6 @@ export default {
         ;
       })
     },
-
     /*修改密码提交*/
     submitForm(changePassForm) {
       this.$refs[changePassForm].validate((valid) => {
@@ -241,9 +241,9 @@ export default {
     },
 
     /*回到首页*/
-    goIndex() {
-      this.$router.push({path: '/index'});
-    },
+    // goIndex() {
+    //   this.$router.push({path: '/index'});
+    // },
 
     FnCommand(){
 
@@ -251,6 +251,9 @@ export default {
 
   },
   created() {
+    let isCollapse = sessionStorage.getItem('isCollapse');
+    this.IsCollapseWidth(isCollapse);
+
     /*获取用户信息*/
     // this.mutUserInfo();
 
