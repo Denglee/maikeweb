@@ -1,3 +1,4 @@
+<script src="../../../../agile-vue/webstorm.config.js"></script>
 <template>
   <div id="tags-view-container" class="tags-view-container" style="position: relative;">
     <scroll-pane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll">
