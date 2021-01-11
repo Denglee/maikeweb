@@ -19,7 +19,19 @@ let menu = {
                   action: "OrganManage",
                   controller: "BasicInfo",
                   name: "组织机构管理"
-                }
+                },
+                {
+                    id: "103",
+                    action: "PeopleManage",
+                    controller: "BasicInfo",
+                    name: "人员管理"
+                },
+                {
+                    id: "102",
+                    action: "ApplyAuthorize",
+                    controller: "BasicInfo",
+                    name: "应用授权"
+                },
             ]
         },
 
@@ -83,6 +95,30 @@ let menu = {
                     controller: "Parameter",
                     name: "应用管理"
                 },
+                {
+                    id: "1512",
+                    action: "ExchangeManage",
+                    controller: "Parameter",
+                    name: "汇率管理"
+                },
+                {
+                    id: "1513",
+                    action: "CountryManage",
+                    controller: "Parameter",
+                    name: "国家管理"
+                },
+                {
+                    id: "1514",
+                    action: "RegionManage",
+                    controller: "Parameter",
+                    name: "区域管理"
+                },
+                {
+                    id: "1515",
+                    action: "SiteManage",
+                    controller: "Parameter",
+                    name: "站点管理"
+                },
             ]
         },
 
@@ -137,7 +173,6 @@ let menu = {
             ]
         },
 
-
         // {
         //     id: "147",
         //     name: "产品信息",
@@ -158,7 +193,6 @@ let menu = {
         //     ]
         // },
 
-
         // {
         //     id: "151",
         //     name: "仓库管理",
@@ -173,6 +207,7 @@ let menu = {
         //         },
         //     ]
         // },
+
         {
             id: "152",
             name: "财务管理",

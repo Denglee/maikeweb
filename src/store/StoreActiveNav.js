@@ -49,7 +49,7 @@ const mutations = {
 
     /* 修改 */
     mutTagPages(state,data){
-        console.log(data);
+        // console.log(data);
         state.tagPages= data;
         return  state.tagPages;
     },

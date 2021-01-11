@@ -44,35 +44,33 @@
 <script>
 export default {
   name: "ApplyManage", //店铺核算主体
-  data(){
-    return{
-      searchForm:{
-
+  data() {
+    return {
+      searchForm: {},
+      btnState: {
+        btnImport: false,
       },
-      btnState:{
-        btnImport:false,
-      },
-      tableArr:[
+      tableArr: [
         {
-          img:'',
-          storeName:'APP_YMZ',
-          storeNum:'跨境电商业务系统',
-          storeFinance:'1',
-          creat_time:'2020-01-06',
-          creater:'muzi',
+          img: '',
+          storeName: 'APP_YMZ',
+          storeNum: '跨境电商业务系统',
+          storeFinance: '1',
+          creat_time: '2020-01-06',
+          creater: 'muzi',
         },
         {
-          img:'',
-          storeName:'APP_REVIEW',
-          storeNum:'留评系统',
-          storeFinance:'0',
-          creat_time:'2020-01-06',
-          creater:'muzi',
-        }
+          img: '',
+          storeName: 'APP_REVIEW',
+          storeNum: '留评系统',
+          storeFinance: '0',
+          creat_time: '2020-01-06',
+          creater: 'muzi',
+        },
       ],
     }
   },
-  methods:{
+  methods: {
     /* 1、 编辑选中  */
     checkedStore(val) {
       console.log(val);
@@ -83,10 +81,11 @@ export default {
       // this.$refs.refTable.toggleRowSelection(row);
     },
 
-    FnBtnAddShow(){},
+    FnBtnAddShow() {
+    },
 
     /*切换*/
-    FnSwitch(val){
+    FnSwitch(val) {
       console.log(val);
     },
 
@@ -96,13 +95,13 @@ export default {
       console.log(data);
 
       /*更新店铺授权*/
-      if(val.type == 'delete'){
+      if (val.type == 'delete') {
         console.log('delete');
       }
     },
 
   },
-  created(){
+  created() {
 
   },
 }

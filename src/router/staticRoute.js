@@ -3,9 +3,21 @@ const Layout = () => import(/* webpackChunkName: "Layout" */ '@/components/Layou
 const staticRoute = [
     {
         path: '/',
-        redirect: '/BasicInfo/CompanyInfo',
+        redirect: '/Index',
     },
 
+    {
+        path: '/Index',
+        component: Layout,
+        children: [
+            {
+                path: '',
+                name:'index',
+                component: () => import(/* webpackChunkName: "Index" */ '../views/Index/index'),
+                meta: {title: '首页'}
+            },
+        ]
+    },
     {
         path: '/',
         component: Layout,
@@ -15,13 +27,25 @@ const staticRoute = [
             {
                 path: 'BasicInfo/CompanyInfo',  /*企业信息*/
                 name: 'CompanyInfo',
-                component: () => import('@/views/BasicInfo/CompanyInfo'),
+                component: () => import(/* webpackChunkName: "CompanyInfo" */ '../views/BasicInfo/CompanyInfo'),
                 meta: {title: '企业信息',keepAlive: true},
             },
             {
                 path: 'BasicInfo/OrganManage',  /*组织机构管理*/
                 name: 'OrganManage',
-                component: () => import('@/views/BasicInfo/OrganManage'),
+                component: () => import(/* webpackChunkName: "OrganManage" */ '../views/BasicInfo/OrganManage'),
+                meta: {title: '组织机构管理',keepAlive: true},
+            },
+            {
+                path: 'BasicInfo/PeopleManage',  /*人员管理*/
+                name: 'PeopleManage',
+                component: () => import('../views/BasicInfo/PeopleManage'),
+                meta: {title: '组织机构管理',keepAlive: true},
+            },
+            {
+                path: 'BasicInfo/ApplyAuthorize',  /*应用授权*/
+                name: 'ApplyAuthorize',
+                component: () => import('../views/BasicInfo/ApplyAuthorize'),
                 meta: {title: '组织机构管理',keepAlive: true},
             },
 
@@ -30,7 +54,7 @@ const staticRoute = [
             {
                 path: 'PowerManage/PowerManage',  /*业务系统角色*/
                 name: 'PowerManage',
-                component: () => import('@/views/PowerManage/PowerManage'),
+                component: () => import(/* webpackChunkName: "PowerManage" */ '../views/PowerManage/PowerManage'),
                 meta: {title: '业务系统角色',keepAlive: true},
             },
 
@@ -39,36 +63,61 @@ const staticRoute = [
             {
                 path: 'StoreManage/StoreAuthorize',  /* 店铺授权 */
                 name: 'StoreAuthorize',
-                component: () => import('@/views/StoreManage/StoreAuthorize'),
+                component: () => import(/* webpackChunkName: "StoreAuthorize" */ '../views/StoreManage/StoreAuthorize'),
                 meta: {title: '店铺授权',keepAlive: true},
             },
             {
                 path: 'StoreManage/AdjustEntity',  /* 店铺核算主体 */
                 name: 'AdjustEntity',
 
-                component: () => import('@/views/StoreManage/AdjustEntity'),
+                component: () => import(/* webpackChunkName: "AdjustEntity" */ '../views/StoreManage/AdjustEntity'),
                 meta: {title: '核算主体',keepAlive: true},
             },
             {
                 path: 'StoreManage/AdjustStore',  /* 财务核算店铺 */
                 name: 'AdjustStore',
-                component: () => import('@/views/StoreManage/AdjustStore'),
+                component: () => import(/* webpackChunkName: "AdjustEntity" */ '../views/StoreManage/AdjustStore'),
                 meta: {title: '财务核算店铺',keepAlive: true},
             },
 
             {
                 path: 'StoreManage/StoreEmail',  /* 店铺邮箱 */
                 name: 'StoreEmail',
-                component: () => import('@/views/StoreManage/StoreEmail'),
+                component: () => import(/* webpackChunkName: "StoreEmail" */ '../views/StoreManage/StoreEmail'),
                 meta: {title: '店铺邮箱',keepAlive: true},
             },
+
 
             /*Parameter 参数设置*/
             {
                 path: 'Parameter/ApplyManage',  /* 应用管理 */
                 name: 'ApplyManage',
-                component: () => import('@/views/Parameter/ApplyManage'),
+                component: () => import(/* webpackChunkName: "ApplyManage" */ '../views/Parameter/ApplyManage'),
                 meta: {title: '应用管理',keepAlive: true},
+            },
+            {
+                path: 'Parameter/ExchangeManage',  /* 汇率管理 */
+                name: 'ExchangeManage',
+                component: () => import(/* webpackChunkName: "ExchangeManage" */ '../views/Parameter/ExchangeManage'),
+                meta: {title: '汇率管理',keepAlive: true},
+            },
+            {
+                path: 'Parameter/CountryManage',  /*国家管理*/
+                name: 'CountryManage',
+                component: () => import(/* webpackChunkName: "CountryManage" */ '../views/Parameter/CountryManage'),
+                meta: {title: '国家管理',keepAlive: true},
+            },
+            {
+                path: 'Parameter/RegionManage',  /*区域管理*/
+                name: 'RegionManage',
+                component: () => import(/* webpackChunkName: "RegionManage" */ '../views/Parameter/RegionManage'),
+                meta: {title: '区域管理',keepAlive: true},
+            },
+            {
+                path: 'Parameter/SiteManage',  /*站点管理*/
+                name: 'SiteManage',
+                component: () => import(/* webpackChunkName: "SiteManage" */ '../views/Parameter/SiteManage'),
+                meta: {title: '站点管理',keepAlive: true},
             },
 
 
@@ -76,7 +125,7 @@ const staticRoute = [
             {
                 path: 'PageManage/BusinessSystem',  /* 业务系统页面 */
                 name: 'BusinessSystem',
-                component: () => import('@/views/PageManage/BusinessSystem'),
+                component: () => import(/* webpackChunkName: "ApplyManage" */ '../views/PageManage/BusinessSystem'),
                 meta: {title: '业务系统页面',keepAlive: true},
             },
 
@@ -85,7 +134,7 @@ const staticRoute = [
             {
                 path: 'MessageCenter/MessageList',  /*消息列表*/
                 name: 'MessageList',
-                component: () => import('@/views/MessageCenter/MessageList'),
+                component: () => import(/* webpackChunkName: "MessageList" */ '../views/MessageCenter/MessageList'),
                 meta: {title: '消息列表',keepAlive: true},
             },
 
@@ -94,13 +143,13 @@ const staticRoute = [
             {
                 path: 'AccountCenter/PersonalInfo',  /*个人信息*/
                 name: 'PersonalInfo',
-                component: () => import('@/views/AccountCenter/PersonalInfo'),
+                component: () => import(/* webpackChunkName: "PersonalInfo" */ '../views/AccountCenter/PersonalInfo'),
                 meta: {title: '个人信息',keepAlive: true},
             },
             {
                 path: 'AccountCenter/AccountSetup',  /*账户设置*/
                 name: 'AccountSetup',
-                component: () => import('@/views/AccountCenter/AccountSetup'),
+                component: () => import(/* webpackChunkName: "AccountSetup" */ '../views/AccountCenter/AccountSetup'),
                 meta: {title: '账户设置',keepAlive: true},
             },
 
@@ -109,24 +158,22 @@ const staticRoute = [
             {
                 path: 'ProductInfo/BrandManage',  /*品牌管理*/
                 name: 'BrandManage',
-                component: () => import('@/views/ProductInfo/BrandManage'),
+                component: () => import(/* webpackChunkName: "BrandManage" */ '../views/ProductInfo/BrandManage'),
                 meta: {title: '品牌管理',keepAlive: true},
             },
             {
                 path: 'ProductInfo/ClassifiedManage',  /*分类管理*/
                 name: 'ClassifiedManage',
-                component: () => import('@/views/ProductInfo/ClassifiedManage'),
+                component: () => import(/* webpackChunkName: "ClassifiedManage" */ '../views/ProductInfo/ClassifiedManage'),
                 meta: {title: '分类管理',keepAlive: true},
             },
-
-
 
 
             /*WarehouseManage 仓库管理*/
             {
                 path: 'WarehouseManage/FBAInventory', /*FBA库存*/
                 name: 'FBAInventory',
-                component: () => import('@/views/WarehouseManage/FBAInventory'),
+                component: () => import(/* webpackChunkName: "FBAInventory" */ '../views/WarehouseManage/FBAInventory'),
                 meta: {title: 'FBA库存',keepAlive: true},
             },
 
@@ -137,12 +184,13 @@ const staticRoute = [
             {
                 path: 'Finance/SettlementDetails',  /*结算明细*/
                 name: 'SettlementDetails',
-                component: () => import('@/views/Finance/SettlementDetails'),
+                component: () => import(/* webpackChunkName: "SettlementDetails" */ '../views/Finance/SettlementDetails'),
                 meta: {title: '财务明细',keepAlive: true},
             },
 
 
             /*ManageCenter  后台管理中心*/
+
 
 
         ],
@@ -156,19 +204,19 @@ const staticRoute = [
         children: [
             {
                 path: '401',
-                component: () => import('@/views/Error/401'),
+                component: () => import(/* webpackChunkName: "401" */ '../views/Error/401'),
             },
             {
                 path: '403',
-                component: () => import('@/views/Error/403'),
+                component: () => import(/* webpackChunkName: "403" */ '../views/Error/403'),
             },
             {
                 path: '404',
-                component: () => import('@/views/Error/404'),
+                component: () => import(/* webpackChunkName: "404" */ '../views/Error/404'),
             },
             {
                 path: '500',
-                component: () => import('@/views/Error/500'),
+                component: () => import(/* webpackChunkName: "500" */ '../views/Error/500'),
             },
         ]
     },

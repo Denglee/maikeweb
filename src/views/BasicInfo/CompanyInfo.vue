@@ -2,8 +2,6 @@
   <div class="public-main">
 
     <el-form :model="roleForm" class="addForm-box"  ref="refRoleForm" label-width="120px" label-position="left">
-
-
       <el-form-item label="企业名称" prop="name" :rules="{ required: true, message: '请输入企业名称', trigger: 'blur' }">
         <el-input v-model="roleForm.name" autocomplete="off" placeholder="请输入企业名称" clearable></el-input>
       </el-form-item>

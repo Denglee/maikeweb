@@ -19,7 +19,6 @@
               ref="refTable"
               height="600"
               @row-click="handleRowClick">
-
       <el-table-column type="selection"></el-table-column>
       <el-table-column prop="storeName" label="店铺名称"></el-table-column>
       <el-table-column prop="site" label="站点"></el-table-column>
@@ -79,29 +78,37 @@
                :close-on-click-modal="false"
                @close='FnCloseAdd'
                width="800px">
-      <el-form :model="addForm" status-icon ref="RefAddForm" label-width="136px" class="public-diaForm">
+      <el-form :model="addForm" ref="RefAddForm" label-width="136px" class="public-diaForm">
         <!--        <div class="form-subTitle">店铺信息</div>-->
         <el-form-item label="店铺账号名称：" prop="storeName" :rules="{ required: true, message: '请输入店铺账号名称', trigger: 'blur' }">
           <el-input type="text" v-model="addForm.storeName" autocomplete="off" clearable placeholder="用于卖家区分各个账号"></el-input>
         </el-form-item>
         <el-form-item label="平台：" prop="platform">
-          <el-input type="text" v-model="addForm.platform" autocomplete="off" clearable></el-input>
+          <el-input type="text" v-model="addForm.platform" autocomplete="off" clearable readonly></el-input>
         </el-form-item>
 
-        <el-form-item label="国家：" prop="countryData"
-                      :rules="{ required: true, message: '请选择国家', trigger: 'change' }">
-          <el-cascader
-              class="public-selectFull"
-              v-model="addForm.countryData"
-              clearable
-              placeholder="请选择国家"
-              :options="options"
-              filterable
-              @change = 'FnChooseCounty'
-              popper-class = 'public-cascader'
-          ></el-cascader>
-
+        <el-form-item label="站点：" prop="site ">
+          <el-select v-model="addForm.site" value.key="id" filterable clearable placeholder="请选择站点"
+                     class="public-selectFull"
+                     :rules="{ required: true, message: '站点', trigger: 'change' }">
+            <el-option v-for="(item, index) in siteArr" :key="item.id"
+                       :value="item.value"
+                       :label="item.label">
+            </el-option>
+          </el-select>
         </el-form-item>
+
+        <el-form-item label="国家：" prop="country ">
+          <el-select v-model="addForm.country" value.key="id" filterable clearable placeholder="请选择国家"
+                     class="public-selectFull"
+                     :rules="{ required: true, message: '国家', trigger: 'change' }">
+            <el-option v-for="(item, index) in countryArr" :key="item.id"
+                       :value="item.value"
+                       :label="item.label">
+            </el-option>
+          </el-select>
+        </el-form-item>
+
 
         <el-form-item label="店铺负责人：" prop="principalName ">
           <el-select v-model="addForm.principalName" value.key="id" filterable clearable placeholder="请选择店铺负责人"
@@ -179,42 +186,26 @@ export default {
       tableArr: [],    //table数据
 
       /*国家联动数据*/
-      options: [
+      siteArr:[
         {
-          value: '2',
-          label: '北美站点',
-          id:20,
-          children: [
-            {
-              value: '21',
-              label: '美国',
-              id:201,
-            },
-            {
-              value: '22',
-              label: '加拿大',
-              id:202,
-            },
-          ]
+          id:1,
+          label:'北美',
+          value:'1'
         },
         {
-          value: '1',
-          label: '欧洲站点',
-          id:10,
-          children: [
-            {
-              value: '11',
-              label: '英国',
-              id:101,
-            },
-            {
-              value: '12',
-              label: '德国',
-              id:102,
-            }
-          ]
+          id:2,
+          label:'欧洲',
+          value:'2'
         },
       ],
+      countryArr:[
+        {
+          id:1,
+          label:'美国',
+          value:'USA'
+        },
+      ],
+
 
       chargeArr:[
         {name:'负责人1', id:'100'},
@@ -226,9 +217,8 @@ export default {
       addForm: {  /*添加弹窗表单数据*/
         storeName: '',
         platform: '',
-        countryData:['2','21'],
-        site:'',
-        country:'',
+        site:'1',  /*站点*/
+        country:'USA',
         principalName :'',
         remark: '',
         sellerId: '',
@@ -283,14 +273,15 @@ export default {
 
       const developerName = 'DK';
       const devMWSAccountId = '1912-3969-1582';
-      if (site == 2) {  //北美
+      if (site == 1) {  //北美
         this.nowCountyName = '北美';
         this.nowCountySite = 'http://sellercentral.amazon.com/gp/mws/registration/register.html?signInPageDisplayed=2&developerName=' + developerName + '&devMWSAccountId=' + devMWSAccountId;
       }
-      if (site == 1) { //欧洲
+      if (site == 2) { //欧洲
         this.nowCountyName = '欧洲';
         this.nowCountySite = 'https://sellercentral.amazon.co.uk/gp/mws/registration/register.html?signInPageDisplayed=2&developerName=' + developerName + '&devMWSAccountId=' + devMWSAccountId;
       }
+
       console.log(site);
       this.MethodCopy(this.nowCountySite);
     },
@@ -338,7 +329,7 @@ export default {
               console.log(res.message);
               this.GLOBAL.axiosSuc(that,res.message);
             }).catch(res => {
-              console.log(res.message);
+              console.log(res);
             })
           } else {
             console.log('put');
@@ -346,7 +337,7 @@ export default {
               console.log(res.message);
               this.GLOBAL.axiosSuc(that,res.message);
             }).catch(res => {
-              console.log(res.message);
+              console.log(res);
             })
           }
 

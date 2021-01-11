@@ -364,3 +364,22 @@ input:-webkit-autofill {
 .form-subTitle{
 
 }
+
+
+/*一左一右 中间空20px*/
+.organize-box{
+  background: none;
+  display: flex;
+  padding: 0;
+  .organizeL-box{
+    width: 220px;
+    background-color: #fff;
+    margin-right: 10px;
+    padding: 20px;
+  }
+  .organizeR-box{
+    width: calc(100% - 230px);
+    background-color: #fff;
+    padding: 20px;
+  }
+}
