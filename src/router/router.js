@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store/store'
-import staticRoute222 from './staticRoute'
+import staticRoute from './staticRoute'
 
 
 
@@ -55,7 +55,7 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'hash', //history
-  routes: staticRoute222
+  routes: staticRoute
 })
 
 

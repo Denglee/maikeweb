@@ -3,7 +3,7 @@ const Layout = () => import(/* webpackChunkName: "Layout" */ '@/components/Layou
 const staticRoute = [
     {
         path: '/',
-        redirect: '/Index',
+        redirect: '/StoreManage/StoreAuthorize',
     },
 
     {
@@ -119,6 +119,12 @@ const staticRoute = [
                 component: () => import(/* webpackChunkName: "SiteManage" */ '../views/Parameter/SiteManage'),
                 meta: {title: '站点管理',keepAlive: true},
             },
+            {
+                path: 'Parameter/BusinessConfig',  /*业务配置*/
+                name: 'BusinessConfig',
+                component: () => import(/* webpackChunkName: "BusinessConfig" */ '../views/Parameter/BusinessConfig'),
+                meta: {title: '业务配置',keepAlive: true},
+            },
 
 
             /*PageManage 页面管理*/
@@ -129,6 +135,21 @@ const staticRoute = [
                 meta: {title: '业务系统页面',keepAlive: true},
             },
 
+            /*PageManage 文档管理*/
+            {
+                path: 'PageManage/File',  /* 文件档案 */
+                name: 'File',
+                component: () => import(/* webpackChunkName: "File" */ '../views/PageManage/File'),
+                meta: {title: '文件档案',keepAlive: true},
+            },
+
+            /*LogMessage 日志管理*/
+            {
+                path: 'LogManage/LogLogin',  /*登录日志*/
+                name: 'LogLogin',
+                component: () => import(/* webpackChunkName: "LogLogin" */ '../views/LogManage/LogLogin'),
+                meta: {title: '登录日志',keepAlive: true},
+            },
 
             /*MessageCenter 消息中心*/
             {
@@ -192,6 +213,78 @@ const staticRoute = [
             /*ManageCenter  后台管理中心*/
 
 
+
+            /*====== 业务中心 ======*/
+            /*ManageCenter  业务工具 */
+            {
+                path: 'BusinessTools/EvaluateMonitor',  /*评价监控*/
+                name: 'EvaluateMonitor',
+                component: () => import(/* webpackChunkName: "EvaluateMonitor" */ '../views/BusinessTools/EvaluateMonitor'),
+                meta: {title: '评价监控',keepAlive: true},
+            },
+            {
+                path: 'BusinessTools/SellWith',  /*跟卖监控*/
+                name: 'SellWith',
+                component: () => import(/* webpackChunkName: "SellWith" */ '../views/BusinessTools/SellWith'),
+                meta: {title: '跟卖监控',keepAlive: true},
+            },
+            {
+                path: 'BusinessTools/KeywordRank',  /*关键词排名*/
+                name: 'KeywordRank',
+                component: () => import(/* webpackChunkName: "KeywordRank" */ '../views/BusinessTools/KeywordRank'),
+                meta: {title: '关键词排名',keepAlive: true},
+            },
+            {
+                path: 'BusinessTools/CompeteMonitor',  /*结算明细*/
+                name: 'CompeteMonitor',
+                component: () => import(/* webpackChunkName: "CompeteMonitor" */ '../views/BusinessTools/CompeteMonitor'),
+                meta: {title: '竞品监控',keepAlive: true},
+            },
+
+
+           /*销售管理*/
+            {
+                path: 'SalesManage/Listing',  /*Listing*/
+                name: 'Listing',
+                component: () => import(/* webpackChunkName: "Listing" */ '../views/SalesManage/Listing'),
+                meta: {title: 'Listing',keepAlive: true},
+            },
+            {
+                path: 'SalesManage/OrderList',  /*订单列表*/
+                name: 'OrderList',
+                component: () => import(/* webpackChunkName: "OrderList" */ '../views/SalesManage/OrderList'),
+                meta: {title: '订单列表',keepAlive: true},
+            },
+            {
+                path: 'SalesManage/ReturnOrder',  /*退货订单*/
+                name: 'ReturnOrder',
+                component: () => import(/* webpackChunkName: "ReturnOrder" */ '../views/SalesManage/ReturnOrder'),
+                meta: {title: '退货订单',keepAlive: true},
+            },
+            {
+                path: 'SalesManage/RemoveOrder',  /*移除订单*/
+                name: 'RemoveOrder',
+                component: () => import(/* webpackChunkName: "RemoveOrder" */ '../views/SalesManage/RemoveOrder'),
+                meta: {title: '移除订单',keepAlive: true},
+            },
+            {
+                path: 'SalesManage/PromotionOrder',  /*促销订单*/
+                name: 'PromotionOrder',
+                component: () => import(/* webpackChunkName: "PromotionOrder" */ '../views/SalesManage/PromotionOrder'),
+                meta: {title: '促销订单',keepAlive: true},
+            },
+            {
+                path: 'SalesManage/AmazonShipping',  /*亚马逊配送货件*/
+                name: 'AmazonShipping',
+                component: () => import(/* webpackChunkName: "AmazonShipping" */ '../views/SalesManage/AmazonShipping'),
+                meta: {title: '亚马逊配送货件',keepAlive: true},
+            },
+            {
+                path: 'SalesManage/UserList',  /*用户列表*/
+                name: 'UserList',
+                component: () => import(/* webpackChunkName: "UserList" */ '../views/SalesManage/UserList'),
+                meta: {title: '用户列表',keepAlive: true},
+            },
 
         ],
 

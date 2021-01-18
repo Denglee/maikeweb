@@ -135,7 +135,7 @@
                     placeholder="请输入AWS访问秘钥"></el-input>
         </el-form-item>
 
-        <el-form-item style="text-align: right;">
+        <el-form-item class="alignR">
           <el-button type="primary" @click="diaState.diaAdd = false;" :loading="btnState.btnCancel">取消</el-button>
           <el-button type="primary" @click="FnBtnAdd('RefAddForm')" :loading="btnState.btnSubmit">保存</el-button>
         </el-form-item>

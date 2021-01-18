@@ -119,6 +119,12 @@ let menu = {
                     controller: "Parameter",
                     name: "站点管理"
                 },
+                {
+                    id: "1516",
+                    action: "BusinessConfig",
+                    controller: "Parameter",
+                    name: "业务配置"
+                },
             ]
         },
 
@@ -133,6 +139,36 @@ let menu = {
                     action: "BusinessSystem",
                     controller: "PageManage",
                     name: "业务系统页面"
+                },
+            ]
+        },
+
+        /*文档管理*/
+        {
+            id: "150",
+            name: "文档管理",
+            fonts: "el-icon-folder",
+            sub_menu: [
+                {
+                    id: "1511",
+                    action: "File",
+                    controller: "PageManage",
+                    name: "文件档案"
+                },
+            ]
+        },
+
+        /*日志管理*/
+        {
+            id: "160",
+            name: "日志管理",
+            fonts: "el-icon-s-cooperation",
+            sub_menu: [
+                {
+                    id: "1611",
+                    action: "LogLogin",
+                    controller: "LogManage",
+                    name: "登录日志"
                 },
             ]
         },
@@ -211,13 +247,95 @@ let menu = {
         {
             id: "152",
             name: "财务管理",
-            fonts: "el-icon-shopping-bag-1", 
+            fonts: "el-icon-shopping-bag-1",
             sub_menu: [
                 {
                     id: "1521",
                     action: "SettlementDetails",
                     controller: "Finance",
                     name: "结算明细"
+                },
+            ]
+        },
+
+        {
+            id: "200",
+            name: "业务工具",
+            fonts: "el-icon-video-camera",
+            sub_menu: [
+                {
+                    id: "2001",
+                    action: "EvaluateMonitor",
+                    controller: "BusinessTools",
+                    name: "评价监控"
+                },
+                {
+                    id: "2002",
+                    action: "SellWith",
+                    controller: "BusinessTools",
+                    name: "跟卖监控"
+                },
+                {
+                    id: "2003",
+                    action: "KeywordRank",
+                    controller: "BusinessTools",
+                    name: "关键词排名"
+                },
+                {
+                    id: "2004",
+                    action: "CompeteMonitor",
+                    controller: "BusinessTools",
+                    name: "竞品监控"
+                },
+            ]
+        },
+
+        {
+            id: "220",
+            name: "销售管理",
+            fonts: "el-icon-video-camera",
+            sub_menu: [
+                {
+                    id: "2201",
+                    action: "Listing",
+                    controller: "SalesManage",
+                    name: "Listing"
+                },
+                {
+                    id: "2202",
+                    action: "OrderList",
+                    controller: "SalesManage",
+                    name: "订单列表"
+                },
+                {
+                    id: "2202",
+                    action: "ReturnOrder",
+                    controller: "SalesManage",
+                    name: "退货订单"
+                },
+                {
+                    id: "2202",
+                    action: "RemoveOrder",
+                    controller: "SalesManage",
+                    name: "移除订单"
+                },
+                {
+                    id: "2202",
+                    action: "PromotionOrder",
+                    controller: "SalesManage",
+                    name: "促销订单"
+                },
+                {
+                    id: "2202",
+                    action: "AmazonShipping",
+                    controller: "SalesManage",
+                    name: "亚马逊配送货件"
+                },
+                {
+                    id: "2202",
+                    action: "UserList",
+                    controller: "SalesManage",
+                    name: "用户列表"
                 },
             ]
         },

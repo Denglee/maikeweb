@@ -1,7 +1,7 @@
 <template>
   <div class="public-main">
 
-    <div style="text-align: right;">
+    <div class="alignR">
       <el-button icon="el-icon-circle-plus-outline" @click="FnBtnAddShow" class="public-btn">绑定邮箱</el-button>
       <el-button icon="el-icon-folder-add" @click="FnBtnAddShow" :loading="btnState.btnImport" class="public-btn">导入邮箱</el-button>
     </div>
@@ -40,6 +40,7 @@
 <script>
 export default {
     name: "AdjustEntity", //店铺核算主体
+
     data(){
      return{
        searchForm:{

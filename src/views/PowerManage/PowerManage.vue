@@ -60,7 +60,7 @@
             </el-checkbox>
         </el-form-item>
 
-        <el-form-item style="text-align: right;">
+        <el-form-item class="alignR">
           <el-button type="primary" @click="diaState.diaAdd = false;" :loading="btnState.btnCancel">取消</el-button>
           <el-button type="primary" @click="FnBtnAddSub('RefAddForm')" :loading="btnState.btnSubmit">保存</el-button>
         </el-form-item>
@@ -91,7 +91,7 @@
   import TabRoleUsers from "@/views/PowerManage/tab/TabRoleUsers";
   import TabRolePermissions from "@/views/PowerManage/tab/TabRolePermissions";
   export default {
-    name: "RolePermissions",
+    name: "PowerManage",
     data() {
 
       const generateData = _ => {
@@ -209,56 +209,6 @@
   }
 </script>
 <style lang="scss">
-  #tabs-power{
-    display: flex;
-    > .el-tabs__header{
-      width: 300px;
-      background-color: #fff;
-      min-height: 80vh;
-      .el-tabs__nav-wrap.is-left:after{
-        width: 0;
-      }
-      .el-tabs__item.is-left{
-        text-align: left;
-      }
-      .el-tabs__active-bar{
-        left: 0 !important;
-      }
-      .el-tabs__item.is-active {
-        color: #000;
-        background: #f6f8fa;
-      }
-      .el-tabs__item:hover{
-        color: #000;
-        background: #f6f8fa;
-      }
-    }
-    > .el-tabs__content {
-      width: calc( 100% - 300px );
-      background-color: #fff;
-    }
-  }
-
-  .roleL-form{
-    width: 300px;
-    background-color: #fff;
-    //border-right: solid 10px #E4E7ED;
-    margin-right: 10px;
-    padding: 10px 10px 0 10px;
-    .public-input {
-      width: 160px !important;
-    }
-    .btn-role{
-      border: none;
-      margin-left: 10px;
-      padding: 7px 10px;
-    }
-  }
-  .powerR-subnav{
-    padding: 10px 10px 0 10px;
-    background-color: #fff;
-    width: calc( 100% - 300px );
-  }
   .transfer-box{
     .el-input{
       width: 150px !important;

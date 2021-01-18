@@ -63,6 +63,12 @@ input:-webkit-autofill {
   display: flex;
   justify-content: space-between;
 }
+.alignR{
+  text-align: right;
+}
+.public-main .marbom{
+  margin-bottom: 15px;
+}
 
 /*============ 公共部分  开始 ============*/
 
@@ -89,6 +95,9 @@ input:-webkit-autofill {
 //  }
 //}
 
+.el-message{
+  z-index: 2100 !important;
+}
 .el-dialog {
   border-radius: 4px;
 }
@@ -126,14 +135,14 @@ input:-webkit-autofill {
   > div{
     margin:0 14px 10px 0;
   }
-
-  .formR-main {
-    margin:0 0 0 15px;
-    flex: 1;
-    text-align: right;
-    //justify-content: flex-end;
-  }
 }
+.formR-main {
+  margin:0 0 0 15px;
+  flex: 1;
+  text-align: right;
+  //justify-content: flex-end;
+}
+
 .public-diaForm{
   width: 90%;
   margin: 0 auto;
@@ -382,4 +391,56 @@ input:-webkit-autofill {
     background-color: #fff;
     padding: 20px;
   }
+}
+
+
+/*BusinessConfig + PowerManage*/
+#tabs-power{
+  display: flex;
+  > .el-tabs__header{
+    width: 300px;
+    background-color: #fff;
+    min-height: 80vh;
+    .el-tabs__nav-wrap.is-left:after{
+      width: 0;
+    }
+    .el-tabs__item.is-left{
+      text-align: left;
+    }
+    .el-tabs__active-bar{
+      left: 0 !important;
+    }
+    .el-tabs__item.is-active {
+      color: #000;
+      background: #f6f8fa;
+    }
+    .el-tabs__item:hover{
+      color: #000;
+      background: #f6f8fa;
+    }
+  }
+  > .el-tabs__content {
+    width: calc( 100% - 300px );
+    background-color: #fff;
+  }
+}
+.roleL-form{
+  width: 300px;
+  background-color: #fff;
+  //border-right: solid 10px #E4E7ED;
+  margin-right: 10px;
+  padding: 10px 10px 0 10px;
+  .public-input {
+    width: 160px !important;
+  }
+  .btn-role{
+    border: none;
+    margin-left: 10px;
+    padding: 7px 10px;
+  }
+}
+.powerR-subnav{
+  padding: 10px 10px 0 10px;
+  background-color: #fff;
+  width: calc( 100% - 300px );
 }

@@ -150,7 +150,7 @@ export default {
 
     /*伸缩状态+宽度*/
     IsCollapseWidth(val){
-      if (val == false || val == 'false') {
+      if (val == false || val == 'false' || !val) {
         this.actChangeLeftWidth('200px');
         this.actChangeNavIsCollapse(false);
       } else {
@@ -252,6 +252,7 @@ export default {
   },
   created() {
     let isCollapse = sessionStorage.getItem('isCollapse');
+    // console.log(isCollapse);
     this.IsCollapseWidth(isCollapse);
 
     /*获取用户信息*/

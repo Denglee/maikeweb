@@ -1,7 +1,7 @@
 <template>
   <div class="public-main">
 
-    <div style="text-align: right;">
+    <div class="alignR">
       <el-button icon="el-icon-circle-plus-outline" @click="FnBtnAddShow" class="public-btn">创建店铺核算主体</el-button>
       <el-button icon="el-icon-circle-plus-outline" @click="FnBtnAddShow" class="public-btn">批量删除</el-button>
       <el-button icon="el-icon-folder-add" @click="FnBtnAddShow" :loading="btnState.btnImport" class="public-btn">导入</el-button>

@@ -14,13 +14,14 @@ const state = {
 
 const getters = {
 
-    /*获取 左侧导航宽度 */
+    /*获取 左侧导航宽度  */
     getNavLeftWidth:(state, navLeftWidth)=>{
         return state.navLeftWidth;
     },
 
-    /*获取 左侧导航状态 */
+    /*获取 左侧导航状态*/
     getNavIsCollapse:(state, navIsCollapse)=>{
+
         return state.navIsCollapse;
     },
 

@@ -43,31 +43,14 @@ import {Message} from 'element-ui';
 
 // 全局 js
 let localUrl = '';  //全局路径
-var localOrigin = window.location.origin;
-
+let localOrigin = window.location.origin;
 // console.log(localOrigin);
 if(localOrigin == 'http://localhost:8282'){
-    localUrl = 'http://vikily.f3322.net:20000';
-    //192.168.0.133
+    // localUrl = 'http://vikily.f3322.net:20000';
 } else {
     localUrl = localOrigin;
 }
 console.log(localUrl);
-// const localUrl = 'http://vikily.f3322.net:20000';  //测试
-// const localUrl = 'https://spt.zmtek.net';  //系统正式
-// const localUrl = 'https://swim.zmtek.net';    //游泳馆正式
-
-
-// 客户分类
-let customerType = [
-    {id:0, name:'未填'},
-    {id:1, name:'A类用户'},
-    {id:2, name:'B类用户'},
-    {id:3, name:'C类用户'},
-    {id:4, name:'D类用户'},
-    {id:5, name:'BR特别多'},
-    {id:6, name:'投诉多'},
-];
 
 
 /*elementui把上传的图片转为base64
@@ -105,11 +88,11 @@ function btnStateChange(that, id, val,  state = true,time=1500){
 }
 
 /* axios 成功回调后的 弹窗提示 和 刷新页面 */
-function axiosSuc(that=this, msg, time=1500){
+function axiosSuc(that=this, msg='成功', time=1500){
     Message({
         type:'success',
         message:msg,
-        duration: 500,
+        duration: 1000,
         offset: 40,
     });
     setTimeout(()=>{
@@ -122,5 +105,4 @@ export default {
     getEleBase64:getEleBase64,
     btnStateChange:btnStateChange,
     axiosSuc:axiosSuc,
-    customerType,
 }
