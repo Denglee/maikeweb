@@ -1,6 +1,6 @@
 <template>
    <div class="public-main">
-      <el-form :model="FormSearch" class="public-form" ref="refRoleForm"
+      <el-form :model="FormSearch" class="public-form" ref="refRoleForm" @submit.native.prevent
                label-width="120px" label-position="left" :inline="true">
          <el-form-item label="关键词" prop="name">
             <el-input v-model="FormSearch.name" class="public-input" autocomplete="off" placeholder="请输入"

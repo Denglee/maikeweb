@@ -1,6 +1,6 @@
 <template>
    <div class="public-main">
-      <el-form class="public-form">
+      <el-form class="public-form" @submit.native.prevent>
          <!--      @submit.native.prevent-->
          <el-input v-model="searchForm.storeName" placeholder="请输入店铺名称" autocomplete="off" clearable
                    class="public-input"
@@ -10,9 +10,9 @@
 
          <div class="formR-main">
             <el-button icon="el-icon-circle-plus-outline" @click="FnBtnAddShow" class="public-btn">店铺授权</el-button>
-            <el-button icon="el-icon-folder-add" @click="FnImport" :loading="btnState.btnImport" class="public-btn">
-               导入店铺
-            </el-button>
+<!--            <el-button icon="el-icon-folder-add" @click="FnImport" :loading="btnState.btnImport" class="public-btn">-->
+<!--               导入店铺-->
+<!--            </el-button>-->
          </div>
       </el-form>
 
@@ -70,11 +70,11 @@
                   <el-dropdown-menu slot="dropdown">
                      <el-dropdown-item :command="{ type:'put', data:scope.row }">更新</el-dropdown-item>
                      <el-dropdown-item :command="{ type:'manageSubAccount', data:scope.row }">管理子账号</el-dropdown-item>
-                     <el-dropdown-item :command="{ type:'a', data:scope.row }">暂停同步</el-dropdown-item>
+<!--                     <el-dropdown-item :command="{ type:'a', data:scope.row }">暂停同步</el-dropdown-item>-->
                      <el-dropdown-item :command="{ type:'delete', data:scope.row }">删除店铺</el-dropdown-item>
-                     <el-dropdown-item :command="{ type:'c', data:scope.row }">同步验证</el-dropdown-item>
-                     <el-dropdown-item :command="{ type:'d', data:scope.row }">财务核算设置</el-dropdown-item>
-                     <el-dropdown-item :command="{ type:'e', data:scope.row }">分配负责人</el-dropdown-item>
+<!--                     <el-dropdown-item :command="{ type:'c', data:scope.row }">同步验证</el-dropdown-item>-->
+<!--                     <el-dropdown-item :command="{ type:'d', data:scope.row }">财务核算设置</el-dropdown-item>-->
+<!--                     <el-dropdown-item :command="{ type:'e', data:scope.row }">分配负责人</el-dropdown-item>-->
                   </el-dropdown-menu>
                </el-dropdown>
 
@@ -120,7 +120,7 @@
                </el-select>
             </el-form-item>
 
-            <el-form-item label="站点：" prop="site ">
+            <el-form-item label="站点：" prop="site">
                <el-select v-model="addForm.site" value.key="id" filterable clearable placeholder="请选择站点"
                           class="public-selectFull" @change='FnChooseSite'
                           :rules="{ required: true, message: '站点', trigger: 'change' }">
@@ -131,7 +131,7 @@
                </el-select>
             </el-form-item>
 
-            <el-form-item label="国家：" prop="country ">
+            <el-form-item label="国家：" prop="country">
                <el-select v-model="addForm.country" value.key="id" filterable clearable placeholder="请选择国家"
                           class="public-selectFull"
                           :rules="{ required: true, message: '国家', trigger: 'change' }">
@@ -142,7 +142,7 @@
                </el-select>
             </el-form-item>
 
-            <el-form-item label="店铺负责人：" prop="principalName ">
+            <el-form-item label="店铺负责人：" prop="principalName">
                <el-select v-model="addForm.principalName" value.key="id" filterable clearable placeholder="请选择店铺负责人"
                           class="public-selectFull" @change='FnChooseCharge'
                           :rules="{ required: true, message: '店铺负责人', trigger: 'change' }">
@@ -481,7 +481,6 @@ export default {
                   } else {
                      this.$message.error('更新失败');
                   }
-
                   // this.GLOBAL.axiosSuc(this,res.mag);
                }).catch(res => {
                   console.log(res);
@@ -586,9 +585,11 @@ export default {
 
       /*添加显示*/
       FnBtnAddShow() {
+
          this.diaState.diaAdd = true;
          this.diaState.submitType = 'add';
          this.diaState.diaAddTitle = '添加店铺授权';
+
          // this.$refs['RefAddForm'].resetFields();
       },
 
@@ -604,7 +605,7 @@ export default {
                if (submitType == 'add') {
                   addStoreAuth(this.addForm).then(res => {
                      console.log(res.message);
-                     this.GLOBAL.axiosSuc(that, res.message);
+                     this.GLOBAL.axiosSuc(that, '添加成功');
                   }).catch(res => {
                      console.log(res);
                   })
@@ -612,7 +613,7 @@ export default {
                   console.log('put');
                   updateStoreAuth(this.addForm).then(res => {
                      console.log(res.message);
-                     this.GLOBAL.axiosSuc(that, res.message);
+                     this.GLOBAL.axiosSuc(that, '更新成功');
                   }).catch(res => {
                      console.log(res);
                   })
@@ -624,10 +625,25 @@ export default {
 
       /* 添加 取消  */
       FnCloseAdd() {
+         // console.log('取消');
          this.GLOBAL.btnStateChange(this, 'btnState', 'btnCancel')
          // this.diaState.diaAdd = false;
-         console.log(this.addForm);
-         this.$refs['RefAddForm'].resetFields();
+
+         // this.$nextTick(() => {
+         //
+         // })
+         // this.$refs['RefAddForm'].resetFields();
+         // console.log(this.addForm);
+         this.addForm = {  /*添加弹窗表单数据*/
+            storeName: '',
+            platform: '',
+            site: '1',  /*站点*/
+            country: 'USA',
+            principalName: '',
+            remark: '',
+            sellerId: '',
+            authToken: '',
+         };
       },
 
 
@@ -657,10 +673,10 @@ export default {
             this.diaState.submitType = 'put';
             this.diaState.diaAddTitle = '更新店铺授权';
             this.addForm = valData;
-            let arr = [];
-            arr.push(valData.site, valData.country);
-            console.log(arr);
-            this.addForm.countryData = arr;
+            // let arr = [];
+            // arr.push(valData.site, valData.country);
+            // console.log(arr);
+            // this.addForm.countryData = arr;
             console.log(this.addForm);
          }
 

@@ -147,15 +147,12 @@ export function axiosDelete(url, params) {
 // this.$axios.post('http://192.168.0.133:20000/admin/Test/login', {
 // post
 // this.$axios.post('/admin/Test/login', formData)
-//     .then(function (response) {
-//         console.log(response);
-//         // if( ){
-//         //
-//         // }
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     });
+// .then(res=>{
+//     console.log(res);
+// })
+// .catch(err=> {
+//     console.log(err);
+// });
 
 // get
 // this.$axios.get('/admin/Test/login', {
@@ -164,9 +161,9 @@ export function axiosDelete(url, params) {
 //         "password": password,
 //     }
 // })
-//     .then(function (response) {
-//         console.log(response);
+//     .then(res=> {
+//         console.log(res);
 //     })
-//     .catch(function (error) {
-//         console.log(error);
+//     .catch(err=> {
+//         console.log(err);
 //     });

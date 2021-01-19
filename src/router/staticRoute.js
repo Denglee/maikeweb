@@ -66,6 +66,7 @@ const staticRoute = [
                 component: () => import(/* webpackChunkName: "StoreAuthorize" */ '../views/StoreManage/StoreAuthorize'),
                 meta: {title: '店铺授权',keepAlive: true},
             },
+
             {
                 path: 'StoreManage/AdjustEntity',  /* 店铺核算主体 */
                 name: 'AdjustEntity',

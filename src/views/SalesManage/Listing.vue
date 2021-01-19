@@ -1,14 +1,14 @@
 <template>
     <div class="public-main">
        <el-form :model="FormSearch" class="public-form" ref="refRoleForm" :inline="true">
-          <el-select v-model="FormSearch.project" value.key="id" filterable clearable placeholder="请选择店铺"
+          <el-select v-model="FormSearch.project" value.key="id" filterable clearable placeholder="请选择状态"
                      class="public-select"  >
              <el-option v-for="(item, index) in projectArr" :key="index"
                         :value="item.value"
                         :label="item.label">
              </el-option>
           </el-select>
-          <el-select v-model="FormSearch.project" value.key="id" filterable clearable placeholder="请选择店铺"
+          <el-select v-model="FormSearch.project" value.key="id" filterable clearable placeholder="请选择配对"
                      class="public-select"  >
              <el-option v-for="(item, index) in projectArr" :key="index"
                         :value="item.value"
@@ -25,6 +25,7 @@
              end-placeholder="结束日期"
              value-format="yyyy-MM-dd">
           </el-date-picker>
+
           <el-button type="primary" class="public-btn" :loading="btnState.btnPost"
                      @click="FnPostSearch('refRoleForm')">提交
           </el-button>
@@ -44,10 +45,10 @@
           <el-table-column prop="SKU" label="本地产品/SKU"></el-table-column>
           <el-table-column prop="listingErr" label="Listing异常">
              <template slot-scope="scope">
-                <el-select  v-model.number="scope.row.listingErr" @change="changeLisErr">
-                   <el-option :value="1" label="内容改变待确认"></el-option>
-                   <el-option :value="2" label="打开异常待确认"></el-option>
-                   <el-option :value="3" label="购物车丢失待确认"></el-option>
+                <el-select v-model="scope.row.listingErr" @change="changeLisErr">
+                   <el-option value="1" label="内容改变待确认"></el-option>
+                   <el-option value="2" label="打开异常待确认"></el-option>
+                   <el-option value="3" label="购物车丢失待确认"></el-option>
                 </el-select>
              </template>
           </el-table-column>
