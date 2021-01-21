@@ -18,18 +18,16 @@ Vue.prototype.$axios = Axios;
 if (process.env.NODE_ENV === 'production') {
     /*第二层if，根据.env文件中的VUE_APP_FLAG判断是生产环境还是测试环境*/
     if (process.env.VUE_APP_FLAG === 'pro') {
-        //production 生产环境发布 地址
-        // console.log('线上 pro');
-        let localUrl2 = window.location.origin;
-        Axios.defaults.baseURL = localUrl2;//正式 路径
+        // console.log('production 生产环境发布 地址 线上 pro');
+        // let localUrl2 = window.location.origin;
+        Axios.defaults.baseURL = 'http://192.168.1.34:7040';//正式 路径
     } else {
-        // console.log('线上 test');
-        Axios.defaults.baseURL = 'http://192.168.1.34:9201';//测试环境路径
+        // console.log('production 生产环境发布 地址 线上 test');
+        Axios.defaults.baseURL = 'http://192.168.1.30:9201';//测试环境路径
     }
 } else {
-    // dev 开发环境 本地 /api
-    // console.log('本地');
-    Axios.defaults.baseURL = '/';
+    // console.log(' development (默认) dev 开发环境 本地 /api ');
+    Axios.defaults.baseURL = '/apiTest';
 }
 
 
@@ -83,10 +81,9 @@ Vue.filter('tempTme', (dataStr) => {
     return dataStr*1000
 });*/
 
-
-Vue.filter('mathFloor', (math) => {
-    return Math.abs(Number(math))
-});
+// Vue.filter('mathFloor', (math) => {
+//     return Math.abs(Number(math))
+// });
 
 /*7、 引用md5*/
 // import md5 from 'js-md5';
@@ -94,7 +91,7 @@ Vue.filter('mathFloor', (math) => {
 
 
 /*8、引入v-charts 官网：https://v-charts.js.org/#/histogram*/
-/*import VCharts from 'v-charts'
+import VCharts from 'v-charts'
 import VeLine from 'v-charts/lib/line.common'  //折线图
 import VeBar from 'v-charts/lib/bar.common' //条形图
 import VeHistogram from 'v-charts/lib/histogram.common' //柱状图
@@ -108,7 +105,7 @@ Vue.component(VeHistogram.name, VeHistogram);
 Vue.component(VePie.name, VePie);
 Vue.component(VeRing.name, VeRing);
 // Vue.component(VeFunnel.name, VeLine);
-Vue.use(VCharts);*/
+Vue.use(VCharts);
 
 
 /*9、打印   https://www.cnblogs.com/dhpong/p/10500370.html */

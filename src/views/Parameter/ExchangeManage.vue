@@ -10,8 +10,8 @@
       <el-table-column prop="name" label="货币名称"></el-table-column>
       <el-table-column prop="exchange">
         <template slot-scope="scope" slot="header">
-          <el-tooltip placement="right-start" >
-            <span style="cursor: pointer;">官方汇率 <i class="el-icon-question"></i></span>
+          <el-tooltip placement="top" >
+            <span class='tr-tooltip'>官方汇率 <i class="el-icon-question"></i></span>
             <div slot="content">官方汇率</div>
           </el-tooltip>
         </template>

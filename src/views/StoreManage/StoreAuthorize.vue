@@ -85,9 +85,11 @@
 
       <el-pagination
          background
-         layout="prev, pager, next, total, jumper"
-         :total="pageArr.pageTotalRows"
-         :page-size="searchForm.pageSize"
+         layout="total,  prev, pager,next, sizes, jumper"
+         :page-sizes="[10, 20, 50, 100]"
+         :current-page="pageArr.pageNum"
+         :total="pageArr.total"
+         :page-size="pageArr.pageSize"
          @size-change='sizeChange'
          @current-change="PageCurrent">
       </el-pagination>

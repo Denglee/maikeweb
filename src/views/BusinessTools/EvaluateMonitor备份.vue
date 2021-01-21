@@ -37,14 +37,16 @@
       <el-table-column prop="store" label="店铺"></el-table-column>
     </el-table>
 
-    <el-pagination
+     <el-pagination
         background
-         layout="total, sizes, prev, pager,next, jumper"
+        layout="total,  prev, pager,next, sizes, jumper"
         :page-sizes="[10, 20, 50, 100]"
-        :total="pageArr.pageTotalRows"
-        :page-size="pageArr.pageListRows"
+        :current-page="pageArr.pageNum"
+        :total="pageArr.total"
+        :page-size="pageArr.pageSize"
+        @size-change='sizeChange'
         @current-change="PageCurrent">
-    </el-pagination>
+     </el-pagination>
 
   </div>
 </template>

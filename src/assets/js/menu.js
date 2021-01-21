@@ -209,6 +209,7 @@ let menu = {
             ]
         },
 
+        /*产品信息*/
         // {
         //     id: "147",
         //     name: "产品信息",
@@ -229,35 +230,8 @@ let menu = {
         //     ]
         // },
 
-        // {
-        //     id: "151",
-        //     name: "仓库管理",
-        //     fonts: "el-icon-circle-check",
-        //     sub_menu: [
-        //         {
-        //             id: "1511",
-        //             action: "FBAInventory",
-        //             controller: "WarehouseManage",
-        //             name: "FBA库存"
-        //
-        //         },
-        //     ]
-        // },
 
-        {
-            id: "152",
-            name: "财务管理",
-            fonts: "el-icon-shopping-bag-1",
-            sub_menu: [
-                {
-                    id: "1521",
-                    action: "SettlementDetails",
-                    controller: "Finance",
-                    name: "结算明细"
-                },
-            ]
-        },
-
+        /*业务工具*/
         {
             id: "200",
             name: "业务工具",
@@ -290,6 +264,7 @@ let menu = {
             ]
         },
 
+        /*销售管理*/
         {
             id: "220",
             name: "销售管理",
@@ -336,6 +311,56 @@ let menu = {
                     action: "UserList",
                     controller: "SalesManage",
                     name: "用户列表"
+                },
+            ]
+        },
+
+       /*仓库管理*/
+        {
+            id: "151",
+            name: "仓库管理",
+            fonts: "el-icon-circle-check",
+            sub_menu: [
+                {
+                    id: "1511",
+                    action: "WarehouseList",
+                    controller: "WarehouseManage",
+                    name: "仓库列表",
+
+                },
+                {
+                    id: "1511",
+                    action: "FBAInventory",
+                    controller: "WarehouseManage",
+                    name: "FBA库存",
+
+                },
+            ]
+        },
+
+        /*财务管理*/
+        {
+            id: "152",
+            name: "财务管理",
+            fonts: "el-icon-shopping-bag-1",
+            sub_menu: [
+                {
+                    id: "1521",
+                    action: "AccountFunds",
+                    controller: "Finance",
+                    name: "账户资金"
+                },
+                {
+                    id: "1521",
+                    action: "RemittanceRecords",
+                    controller: "Finance",
+                    name: "回款记录"
+                },
+                {
+                    id: "1521",
+                    action: "SettlementDetails",
+                    controller: "Finance",
+                    name: "结算明细"
                 },
             ]
         },

@@ -60,12 +60,14 @@
       </el-table>
 
       <el-pagination
-          background
-           layout="total, sizes, prev, pager,next, jumper"
-        :page-sizes="[10, 20, 50, 100]"
-          :total="pageArr.pageTotalRows"
-          :page-size="pageArr.pageListRows"
-          @current-change="PageCurrent">
+         background
+         layout="total,  prev, pager,next, sizes, jumper"
+         :page-sizes="[10, 20, 50, 100]"
+         :current-page="pageArr.pageNum"
+         :total="pageArr.total"
+         :page-size="pageArr.pageSize"
+         @size-change='sizeChange'
+         @current-change="PageCurrent">
       </el-pagination>
 
       <!-- 自定义列 -->

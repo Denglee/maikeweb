@@ -58,10 +58,12 @@
          </el-table-column>
       </el-table>
 
+      <!--分页-->
       <el-pagination
          background
-         layout="total, prev, pager,next, sizes, jumper"
+         layout="total,  prev, pager,next, sizes, jumper"
          :page-sizes="[10, 20, 50, 100]"
+         :current-page="pageArr.pageNum"
          :total="pageArr.total"
          :page-size="pageArr.pageSize"
          @size-change='sizeChange'
@@ -157,8 +159,9 @@ export default {
    data() {
       return{
          pageArr:{
-            total:20,
-            pageSize:10
+            total: 100,  //总条数
+            pageSize: 20, //每页个数
+            pageNum: 1, //当前页数
          },
          FormSearch:{
 

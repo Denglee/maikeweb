@@ -102,7 +102,7 @@
 
     <el-pagination
         background
-         layout="total, sizes, prev, pager,next, jumper"
+         layout="total,  prev, pager,next, sizes, jumper"
         :page-sizes="[10, 20, 50, 100]"
         :total="pageArr.pageTotalRows"
         :page-size="pageArr.pageSize"

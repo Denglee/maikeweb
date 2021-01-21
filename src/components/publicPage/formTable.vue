@@ -104,12 +104,14 @@
          </el-table-column>
       </el-table>
 
+      <!--分页-->
       <el-pagination
          background
-         layout="total, sizes, prev, pager,next, jumper"
+         layout="total, prev, pager, next, sizes, jumper"
          :page-sizes="[10, 20, 50, 100]"
          :total="pageArr.total"
          :page-size="pageArr.pageSize"
+         :current-page="pageArr.pageNum"
          @size-change='sizeChange'
          @current-change="PageCurrent">
       </el-pagination>
@@ -141,8 +143,9 @@ export default {
    data() {
       return {
          pageArr: {
-            total: 100,
-            pageSize: 10,
+            total: 100,  //总条数
+            pageSize: 20, //每页个数
+            pageNum: 1, //当前页数
          },
          FormSearch: {},
          FormAdd: {},
@@ -221,12 +224,13 @@ export default {
 
       /*分页*/
       PageCurrent(page) {
-         console.log(page)
-         // this.staffPage = page;
+         // console.log(page)
+         this.pageArr.pageNum = page;
          // this.getStaffIndex();
       },
       sizeChange(size){
-         console.log(size);
+         // console.log(size);
+         this.pageArr.pageSize = size;
       },
 
       /*搜索事件*/

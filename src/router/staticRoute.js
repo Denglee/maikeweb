@@ -193,6 +193,12 @@ const staticRoute = [
 
             /*WarehouseManage 仓库管理*/
             {
+                path: 'WarehouseManage/WarehouseList', /*仓库列表*/
+                name: 'WarehouseList',
+                component: () => import(/* webpackChunkName: "WarehouseList" */ '../views/WarehouseManage/WarehouseList'),
+                meta: {title: '仓库列表',keepAlive: true},
+            },
+            {
                 path: 'WarehouseManage/FBAInventory', /*FBA库存*/
                 name: 'FBAInventory',
                 component: () => import(/* webpackChunkName: "FBAInventory" */ '../views/WarehouseManage/FBAInventory'),
@@ -203,6 +209,18 @@ const staticRoute = [
 
 
             /* Finance 财务*/
+            {
+                path: 'Finance/AccountFunds',  /*账户资金*/
+                name: 'AccountFunds',
+                component: () => import(/* webpackChunkName: "AccountFunds" */ '../views/Finance/AccountFunds'),
+                meta: {title: '账户资金',keepAlive: true},
+            },
+            {
+                path: 'Finance/RemittanceRecords',  /*回款记录*/
+                name: 'RemittanceRecords',
+                component: () => import(/* webpackChunkName: "RemittanceRecords" */ '../views/Finance/RemittanceRecords'),
+                meta: {title: '回款记录',keepAlive: true},
+            },
             {
                 path: 'Finance/SettlementDetails',  /*结算明细*/
                 name: 'SettlementDetails',
