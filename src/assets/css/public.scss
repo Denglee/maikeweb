@@ -172,6 +172,22 @@ input:-webkit-autofill {
   width: 180px !important;
 }
 
+.public-selInp{
+  display: flex;
+  border: solid 1px #ddd;
+  border-radius: 6px;
+  input{
+    border: none;
+  }
+  & >.el-select{
+    width: 30%;
+    border-right: solid 1px #ddd;
+  }
+  & >.el-input{
+    width: 70%;
+  }
+}
+
 .public-table {
   border-radius: 6px;
   margin: 10px auto 20px;

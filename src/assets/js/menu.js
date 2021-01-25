@@ -365,6 +365,22 @@ let menu = {
             ]
         },
 
+        /*广告报表*/
+        /*财务管理*/
+        {
+            id: "152",
+            name: "广告报表",
+            fonts: "el-icon-shopping-bag-1",
+            sub_menu: [
+                {
+                    id: "1521",
+                    action: "ADReports",
+                    controller: "ReportsCenter",
+                    name: "广告活动报表"
+                },
+            ]
+        },
+
     ]
 };
 

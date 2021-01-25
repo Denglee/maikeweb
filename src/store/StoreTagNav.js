@@ -127,7 +127,7 @@ const actions = {
         window.sessionStorage.setItem('isCollapse',res);
         return commit('mutChangeNavIsCollapse',res);
     },
-    getNavIsCollapse:(state, navIsCollapse)=>{
+    actNavIsCollapse:(state, navIsCollapse)=>{
         return state.navIsCollapse;
     },
 

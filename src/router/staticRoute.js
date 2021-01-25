@@ -305,8 +305,16 @@ const staticRoute = [
                 meta: {title: '用户列表',keepAlive: true},
             },
 
-        ],
+            /*====== 广告中心 ======*/
+            /*ManageCenter  广告活动报表 */
+            {
+                path: 'ReportsCenter/ADReports',  /*广告活动报表*/
+                name: 'ADReports',
+                component: () => import(/* webpackChunkName: "ADReports" */ '../views/ReportsCenter/ADReports'),
+                meta: {title: '广告活动报表',keepAlive: true},
+            },
 
+        ],
     },
 
     {

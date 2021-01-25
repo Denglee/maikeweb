@@ -130,7 +130,6 @@ export default {
     data(){
      return{
        tabPosition: 'left',
-       num:1,
        tabActiveName:'name1',
 
        formData: {
@@ -222,9 +221,12 @@ export default {
 
       /*分页 */
       PageCurrent(page) {
-        console.log(page)
+        console.log(page);
         // this.staffPage = page;
         // this.getStaffIndex();
+      },
+      sizeChange(size){
+        console.log(size);
       },
     },
     created(){
