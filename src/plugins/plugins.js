@@ -34,7 +34,6 @@ if (process.env.NODE_ENV === 'production') {
 /*  A、 引入 element*/
 import ElementUI from 'element-ui';
 import '@/assets/theme/index.css'
-
 Vue.use(ElementUI, {
     size: 'small'
 });
