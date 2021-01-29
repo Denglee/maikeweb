@@ -117,7 +117,11 @@
       </el-tab-pane>
 
       <el-tab-pane label="SP-广告组" lazy name="name2">
-
+        <tinymce ref="editor"
+                 style="max-width: 80%;"
+                 v-model="user_des"
+                 :disabled="disabled">
+        </tinymce>
       </el-tab-pane>
 
       <el-tab-pane label="SP-推广的商品" lazy name="name3">
@@ -141,13 +145,19 @@
 </template>
 
 <script>
+import tinymce from "@/components/tinymce/tinymce";
+
 export default {
   name: "ADReports",
   inject:['reLoad'],
+  components:{tinymce},
   data(){
     return{
+      user_des:'',
+      disabled:false,
+
       tabPosition: 'left',
-      tabActiveName:'name1',
+      tabActiveName:'name2',
 
       selInp:'',
       selInp2:'',

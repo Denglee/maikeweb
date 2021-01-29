@@ -17,7 +17,7 @@ module.exports = {
    },
 
    // outputDir: 在npm run build 或 yarn build 时 ，生成文件的目录名称（要和baseUrl的生产环境路径一致）
-   // outputDir: '/src/assets',
+   outputDir: '/src/assets',
    publicPath: './',  //有些地方这里需要 ./
 
    //用于放置生成的静态资源 (js、css、img、fonts) 的；（项目打包之后，静态资源会放在这个文件夹下）
